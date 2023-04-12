@@ -2,10 +2,10 @@
   "name": "parcel-project-template",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://NikitaLan.github.io/Filmfix10",
+  "homepage": "https://NikitaLan.github.io/Filmfix13",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /Filmfix10/"
+    "build": "parcel build src/*.html --public-url /Filmfix13/"
   },
   "repository": {
     "type": "git",
