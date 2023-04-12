@@ -1,2 +1,14 @@
-@import './common';
-@import './example';
+@import "./utils/variables";
+@import "./base/reset";
+@import "./utils/mixins";
+@import "./utils/container";
+@import "./utils/vis-hidden";
+
+@import "./components/header-home";
+@import "./components/header-library";
+@import "./components/gallery-home";
+@import "./components/pagination";
+@import "./components/gallery-library";
+@import "./components/loader";
+@import "./components/modal";
+@import "./footer"

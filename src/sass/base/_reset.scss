@@ -1,0 +1,41 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+
+  object-fit: cover;
+  object-position: center;
+}
+
+a {
+  text-decoration: none;
+  text-transform: none;
+  color: inherit;
+}
+
+body {
+  font-family: $main-font;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  margin: 0 auto;
+}
+
+button {
+  margin: 0;
+  padding: 0;
+  font-family: inherit;
+  cursor: pointer;
+}
