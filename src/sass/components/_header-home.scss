@@ -240,6 +240,13 @@
 
   stroke: var(--color-black);
   fill: none;
+  background-color: transparent;
+  border: none;
+  // scale: 1.1;
+  &:focus,
+  &:hover {
+    scale: 1.2;
+  }
 
   @include tablet {
     right: 13px;
@@ -250,6 +257,12 @@
     right: 16px;
   }
 }
+
+// .button-icon-input {
+//   // background-color: transparent;
+//   border: none;
+//   // outline: solid 5px salmon;
+// }
 
 .header-logo-wrap {
   text-align: center;
