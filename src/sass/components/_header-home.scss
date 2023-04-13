@@ -240,6 +240,13 @@
 
   stroke: var(--color-black);
   fill: none;
+  background-color: transparent;
+  border: none;
+  // scale: 1.1;
+  &:focus,
+  &:hover {
+    scale: 1.2;
+  }
 
   @include tablet {
     right: 13px;
