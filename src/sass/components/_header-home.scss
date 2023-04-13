@@ -278,6 +278,10 @@
   margin-bottom: 16px;
 
   @include tablet {
+    margin-bottom: 16px;
+  }
+
+  @include desktop {
     margin-bottom: 32px;
   }
 }
