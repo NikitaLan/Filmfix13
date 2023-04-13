@@ -1,3 +1,4 @@
+@import "./base/common";
 @import "./utils/variables";
 @import "./base/reset";
 @import "./utils/mixins";
@@ -11,4 +12,4 @@
 @import "./components/gallery-library";
 @import "./components/loader";
 @import "./components/modal";
-@import "./footer"
+@import "./components/footer"
