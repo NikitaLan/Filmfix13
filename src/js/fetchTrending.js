@@ -9,7 +9,9 @@ export async function getTrendFilmData(page) {
     const { data } = await axios.get(
       `${TREND_URL}?api_key=${API_KEY}&page=${page}`
     );
-
+    // Добавил 12 и 13 строку, чтобы заполнить localStorage. из продакшена удалить! (Артем)
+    // const inputData = JSON.stringify(data);
+    // localStorage.setItem('watched-list', inputData);
     return data;
   } catch (error) {
     console.error('Smth wrong with api get full trends' + error);
