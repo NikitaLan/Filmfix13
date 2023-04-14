@@ -1,19 +1,13 @@
 .btnUp-wrapper {
-  position: fixed;
-  bottom: 39px;
-  right: 10px;
+    position: fixed;
+    bottom: 39px;
+    right: 10px;
 
-  z-index: 10;
+    z-index: 10;
 
-  color: var(--color-black);
-
+  fill: tomato;
   cursor: pointer;
 
- 
-  .btnUp-wrapper:hover,
-  .btnUp-wrapper:focus {
-    color: var(--color-accent);
-  }
 
   @media screen and (max-width: 480px) {
     bottom: 39px;
@@ -31,7 +25,12 @@
   }
 }
 
-btnUp__icon {
+
+.btnUp-wrapper:hover, .btnUp-wrapper:focus {
+  fill: rgba(87, 0, 128, 0.637);
+}
+
+.btnUp__icon {
   width: 40px;
   height: 40px;
 
