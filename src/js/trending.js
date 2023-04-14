@@ -1,6 +1,6 @@
 import { allGenres } from './allGenresList';
 import { getTrendFilmData } from './fetchTrending';
-import { renderTrendGallery } from './CardMarkup';
+import { renderTrendGallery } from './renderingCardMarkup';
 import { createCustomProperties } from './customPropertiesToResults';
 
 document.addEventListener('DOMContentLoaded', startPage);
