@@ -1,0 +1,46 @@
+.btnUp-wrapper {
+    position: fixed;
+    bottom: 39px;
+    right: 10px;
+
+    z-index: 10;
+
+  fill: tomato;
+  cursor: pointer;
+
+
+  @media screen and (max-width: 480px) {
+    bottom: 39px;
+    right: calc(((100vw - 340px) / 2));
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    bottom: 39px;
+    right: calc(((100vw - 768px) / 2));
+  }
+
+  @media screen and (min-width: 1200px) {
+    bottom: 55px;
+    right: calc(((100vw - 1024px) / 2));
+  }
+}
+
+
+.btnUp-wrapper:hover, .btnUp-wrapper:focus {
+  fill: rgba(87, 0, 128, 0.637);
+}
+
+.btnUp__icon {
+  width: 40px;
+  height: 40px;
+
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    width: 50px;
+    height: 50px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    width: 60px;
+    height: 60px;
+  }
+}
