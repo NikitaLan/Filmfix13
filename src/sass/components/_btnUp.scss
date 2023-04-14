@@ -5,14 +5,14 @@
 
   z-index: 10;
 
-  color: tomato;
+  color: var(--color-black);
 
   cursor: pointer;
 
  
-  &:hover,
-  &:focus {
-    color: red;
+  .btnUp-wrapper:hover,
+  .btnUp-wrapper:focus {
+    color: var(--color-accent);
   }
 
   @media screen and (max-width: 480px) {
