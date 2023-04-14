@@ -1,0 +1,26 @@
+{{#each this}}
+  <li class='gallery-home__item'>
+    <article class='gallery-home__card'>
+      <a class='gallery-home__link'>
+        <div class='gallery-home__card-thumb'>
+          <img
+            src='https://image.tmdb.org/t/p/original/{{poster_path}}'
+            alt='Film poster'
+            data-id='{{id}}'
+            loading='lazy'
+            width='395'
+            height='574'
+          />
+        </div>
+        <div class='gallery-home__card-info'>
+          <h3 class='gallery-home__card-title'>{{title}}</h3>
+          <p class='gallery-home__card-text'>
+            {{genresString}}
+            |
+            {{year}}
+          </p>
+        </div>
+      </a>
+    </article>
+  </li>
+{{/each}}
