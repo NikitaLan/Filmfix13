@@ -1,0 +1,48 @@
+.gallery-library {
+padding-bottom: 20px;
+}
+.gallery-library__bg {
+    display: block;
+    min-width: 280px;
+    min-height: 209px;
+    background-image: url(/src/images/gallery-library/empty-320.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    text-align: center;
+
+    @include mobile {
+        background-image: url(/src/images/gallery-library/empty-480.png);
+        min-width: 400px;
+        min-height: 299px;
+    }
+    @include tablet {
+        background-image: url(/src/images/gallery-library/empty-768.png);
+    }
+    @include desktop {
+        background-image: url(/src/images/gallery-library/empty-1280.png);
+
+    }
+}
+.empty {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;    
+}
+
+.empty__text {
+    color: var(--color-accent);
+    font-size: 22px;
+
+    @include mobile {
+        font-size: 30px;
+    }
+    @include mobile {
+        font-size: 36px;
+    }
+    @include desktop {
+        font-size: 40px;
+    }
+}
