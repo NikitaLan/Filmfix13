@@ -5,6 +5,7 @@ export function createCustomProperties(films, allGenres) {
     ...film,
     year: createYear(film),
     genresString: createGenresFromTrend(film.genre_ids, allGenres),
+    rate: film.vote_average.toFixed(1),
   }));
 }
 
