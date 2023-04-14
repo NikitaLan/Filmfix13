@@ -1,0 +1,14 @@
+{{#each this}}
+  <div class="movie-card">
+    <img src="https://image.tmdb.org/t/p/original{{poster_path}}" alt="" loading="lazy" />
+    <div class="info">
+      <h2>{{original_title}}</h2>
+      <p class="info-item">
+        <b>Genre:</b> {{genre_ids}}
+      </p>
+      <p class="info-item">
+        <b>Release Date:</b> {{release_date}}
+      </p>
+    </div>
+  </div>
+{{/each}}
