@@ -2,9 +2,11 @@ const footerCloseBtn = document.querySelector('[data-modal-close]');
 const footerBackdrop = document.querySelector('.footer__backdrop');
 const footerLink = document.querySelector('footer__link');
 
+footerLink.addEventListener('click', onFooterModal);
+
 
 export function onFooterModal(){
-    footerLink.addEventListener('click', openFooterModal);
+   
     footerBackdrop.classList.remove('is-hidden');
     document.querySelector('body').classList.add('noScroll');
     document.addEventListener('keydown', closeFooterModal);
