@@ -1,36 +1,38 @@
-const footerCloseBtn = document.querySelector('[data-footer-modal-close]');
-const footerBackdrop = document.querySelector('.footer__backdrop');
-const footerLink = document.querySelector('.footer__link');
 
-footerLink.addEventListener('click', onFooterModal);
+const refs ={
+ footerCloseBtn : document.querySelector('[data-footer-modal-close]'),
+ footerBackdrop : document.querySelector('.footer__backdrop'),
+ footerLink : document.querySelector('.footer__link')}
+
+refs.footerLink.addEventListener('click', onFooterModal);
 
 
 export function onFooterModal(){
    
-    footerBackdrop.classList.remove('is-hidden');
+    refs.footerBackdrop.classList.remove('is-hidden');
     document.querySelector('body').classList.add('noScroll');
     document.addEventListener('keydown', closeFooterModal);
-    footerBackdrop.addEventListener('click', closeFooterModal);
-    footerCloseBtn.addEventListener('click', footerModalHidden);
+    refs.footerBackdrop.addEventListener('click', closeFooterModal);
+    refs.footerCloseBtn.addEventListener('click', footerModalHidden);
 }
 
 
 
 function footerModalHidden(){
-footerBackdrop.classList.add('is-hidden');
+refs.footerBackdrop.classList.add('is-hidden');
 clearListeners();
 }
 
 function closeFooterModal(evt){
-    if (evt.target === footerBackdrop){
-        footerBackdrop.classList.add('is-hidden');
+    if (evt.target === refs.footerBackdrop){
+        refs.footerBackdrop.classList.add('is-hidden');
         clearListeners();
     }
 }
 
 function clearListeners(){
     document.removeEventListener('keydown', closeFooterModal);
-    footerBackdrop.removeEventListener('click', closeFooterModal);
-    footerCloseBtn.removeEventListener('click', footerModalHidden);
+    refs.footerBackdrop.removeEventListener('click', closeFooterModal);
+    refs.footerCloseBtn.removeEventListener('click', footerModalHidden);
     document.querySelector('body').classList.remove('noScroll');
 }
