@@ -53,3 +53,17 @@
     transform: scale(1.5);
   }
 }
+
+
+.footer__backdrop{
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  opacity: 1;
+  top:0;
+  position: fixed;
+}
+
+.footer__backdrop.is-hidden{
+  opacity: 0;
+}
