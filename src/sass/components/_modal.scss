@@ -8,7 +8,7 @@
     opacity: 1;
     -webkit-transition: opacity var(--animation);
     transition: opacity var(--animation);
-    z-index: 1;
+    z-index: 10;
   }
   .backdrop.is-hidden {
     opacity: 0;
