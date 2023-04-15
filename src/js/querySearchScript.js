@@ -1,6 +1,6 @@
 import Notiflix from 'notiflix';
 import { ThemoviedbAPI } from './themoviedb-api';
-import createGalleryCards from '../templates/gallery-card.hbs
+import createGalleryCards from '../templates/gallery-card.hbs';
 
 const searchFormEl = document.querySelector('#search-form');
 const gallaryListEl = document.querySelector('.gallery-home__list');
