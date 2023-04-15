@@ -1,10 +1,11 @@
 
 const refs ={
- footerCloseBtn : document.querySelector('[data-footer-modal-close]'),
- footerBackdrop : document.querySelector('.footer__backdrop'),
- footerLink : document.querySelector('.footer__link')}
+ footerCloseBtn : document.querySelector("[data-footer-modal-close]"),
+ footerOpenBtn: document.querySelector("[data-footer-modal-open]"),
+ footerBackdrop : document.querySelector('.footer__backdrop')
+ }
 
-refs.footerLink.addEventListener('click', onFooterModal);
+refs.footerOpenBtn.addEventListener('click', onFooterModal);
 
 
 export function onFooterModal(){
