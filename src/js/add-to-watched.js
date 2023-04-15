@@ -1,76 +1,48 @@
-// // 💙💛 Koshyk Kostiantyn
+// console.log('💙💛 Koshyk Kostiantyn');
 
-// import { ThemoviedbAPI } from '/src/js/themoviedb-api';
+// получаем объект с свойствами данных фильма из модального окна
+import { dataModalFilm } from '/src/js/movie-modal';
 
-// const btnAddToWatchedEl = document.querySelector('.btn-watched');
-// const btnRemoveEl = document.querySelector('.js-remove');
+const btnAddToWatchedEl = document.querySelector(
+  '.modal-movie__add-to-watched-btn'
+);
 
-// btnAddToWatchedEl.addEventListener('click', onAddFilmToWatched);
+btnAddToWatchedEl.addEventListener('click', onAddFilmToWatched);
 
-// const apiTest = new ThemoviedbAPI();
+function onAddFilmToWatched() {
+  // console.log(dataModalFilm);
 
-// let addLocalStorage = [];
+  dataModalFilm.then(data => {
+    console.log('then', data);
 
-// function onAddFilmToWatched() {
-//   apiTest.fetchMovie().then(data => {
-//     addLocalStorage.push(data.results[1]);
-//     localStorage.setItem('watched', JSON.stringify(addLocalStorage));
-//     // localStorage.setItem('watched', JSON.stringify(addLocalStorage));
+    if (localStorage.getItem('watched') === null) {
+      localStorage.setItem('watched', '[]');
+    }
 
-//     // valuesLocalStor.push(data.results[0]);
-//     // addToLocalStorage();
+    addToLocalStorage(data);
 
-//     // getLocal = JSON.parse(localStorage.getItem('watched'));
+    btnAddToWatchedEl.textContent = 'Remove from watchet';
+    btnAddToWatchedEl.classList.toggle('.js-remove');
+  });
+}
 
-//     btnAddToWatchedEl.textContent = 'Remove from watchet';
-//     btnAddToWatchedEl.classList.toggle('.js-remove');
+function addToLocalStorage(data) {
+  let getLocalStorage = JSON.parse(localStorage.getItem('watched'));
 
-//     // console.log('val', valuesLocalStor);
-//   });
+  if (!getLocalStorage.find(el => el.id === data.id)) {
+    getLocalStorage.push(data);
+    localStorage.setItem('watched', JSON.stringify(getLocalStorage));
+  }
+  console.log('Data ls', getLocalStorage);
+}
+
+// // если использовать id
+// function addToLocalStorage(data) {
+//   let getLocalStorage = JSON.parse(localStorage.getItem('watched'));
+
+//   if (!getLocalStorage.includes(data)) {
+//     getLocalStorage.push(data);
+//     localStorage.setItem('watched', JSON.stringify(getLocalStorage));
+//   }
+//   console.log('Data ls', getLocalStorage);
 // }
-
-// // const btnAddToWatchedEl = document.querySelector('.btn-watched');
-// // const btnRemoveEl = document.querySelector('.js-remove');
-
-// // btnAddToWatchedEl.addEventListener('click', onAddFilmToWatched);
-
-// // const apiTest = new ThemoviedbAPI();
-
-// // let valuesLocalStor = [];
-// // let getLocal = null;
-
-// // function onAddFilmToWatched(evt) {
-// //   apiTest.fetchMovie().then(data => {
-// //     localStorage.setItem('watched', JSON.stringify(data.results[0]));
-// //     valuesLocalStor.push(data.results[0]);
-// //     // addToLocalStorage();
-
-// //     // getLocal = JSON.parse(localStorage.getItem('watched'));
-
-// //     btnAddToWatchedEl.textContent = 'Remove from watchet';
-// //     btnAddToWatchedEl.classList.toggle('.js-remove');
-
-// //     console.log('val', valuesLocalStor);
-// //   });
-// // }
-
-// // function onAddFilmToWatched(evt) {
-// //   apiTest.fetchMovie().then(data => {
-// //     addToLocalStorage();
-
-// //     valuesLocalStor = JSON.parse(localStorage.getItem('watched'));
-
-// //     valuesLocalStor.push(data.results[0]);
-
-// //     btnAddToWatchedEl.textContent = 'Remove from watchet';
-// //     btnAddToWatchedEl.classList.toggle('.js-remove');
-
-// //     console.log('val', valuesLocalStor);
-// //   });
-// // }
-
-// function addToLocalStorage() {
-//   localStorage.setItem('watched', JSON.stringify(valuesLocalStor));
-// }
-
-// function onRemove() {}
