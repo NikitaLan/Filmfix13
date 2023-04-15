@@ -4,7 +4,7 @@ const footerLink = document.querySelector('footer__link');
 
 
 export function onFooterModal(){
-    footerLink.addEventListener('click', openFooterModal)
+    footerLink.addEventListener('click', openFooterModal);
     footerBackdrop.classList.remove('is-hidden');
     document.querySelector('body').classList.add('noScroll');
     document.addEventListener('keydown', closeFooterModal);
