@@ -14,10 +14,7 @@ export function onFooterModal(){
     footerCloseBtn.addEventListener('click', footerModalHidden);
 }
 
-function openFooterModal(){
-    footerBackdrop.classList.remove('is-hidden');
-    clearListeners();
-}
+
 
 function footerModalHidden(){
 footerBackdrop.classList.add('is-hidden');
