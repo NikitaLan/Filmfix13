@@ -9,7 +9,7 @@ const refs = {
 const STORAGE_KEY = 'queue-list';
 let queueList = {};
 
-refs.watchedBtn.addEventListener('click', takeListFromStorage);
+refs.queueBtn.addEventListener('click', takeListFromStorage);
 
 function takeListFromStorage() {
   console.log('click on btn Queue');
