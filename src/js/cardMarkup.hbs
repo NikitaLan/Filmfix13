@@ -1,5 +1,5 @@
 {{#each this}}
-  <li class='gallery-home__item'>
+  <li class='gallery-home__item'>  
     <article class='gallery-home__card'>
       <a class='gallery-home__link'>
         <div class='gallery-home__card-thumb'>
@@ -11,10 +11,11 @@
             width='395'
             height='574'
           />
+          <span class="gallery-home__card-rate">{{rate}}</span>
         </div>
         <div class='gallery-home__card-info'>
-          <h3 class='gallery-home__card-title'>{{title}}</h3>
-          <p class='gallery-home__card-text'>
+          <h3 class='gallery-home__card-title' data-id='{{id}}'>{{title}}</h3>
+          <p class='gallery-home__card-text' data-id='{{id}}'>
             {{genresString}}
             |
             {{year}}
