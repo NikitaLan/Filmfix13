@@ -1,6 +1,6 @@
 const footerCloseBtn = document.querySelector('[data-modal-close]');
 const footerBackdrop = document.querySelector('.footer__backdrop');
-const footerLink = document.querySelector('footer__link');
+const footerLink = document.querySelector('.footer__link');
 
 footerLink.addEventListener('click', onFooterModal);
 
