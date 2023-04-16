@@ -3,6 +3,7 @@ import { ThemoviedbAPI } from './themoviedb-api';
 import cardMarkup from '../js/cardMarkup.hbs';
 import {getGenres} from './createGenres';
 import { createCustomProperties } from './customPropertiesToResults';
+import makeRatingColor from './ratingColor'
 
 // import createGalleryCards from '../templates/gallery-card.hbs';
 
@@ -56,6 +57,8 @@ const handleSearchFormSubmit = async event => {
       const allGenres = getGenres();
       const fullTrendData = createCustomProperties(results, allGenres);
       gallaryListEl.innerHTML = cardMarkup(fullTrendData);
+      makeRatingColor();
+
   
   } catch (error) {
     console.error(error);
