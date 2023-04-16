@@ -10,8 +10,6 @@ const btnAddToWatchedEl = document.querySelector(
 btnAddToWatchedEl.addEventListener('click', onAddFilmToWatched);
 
 function onAddFilmToWatched() {
-  // console.log(dataModalFilm);
-
   dataModalFilm.then(data => {
     console.log('then', data);
 
@@ -20,9 +18,6 @@ function onAddFilmToWatched() {
     }
 
     addToLocalStorage(data);
-
-    btnAddToWatchedEl.textContent = 'Remove from watchet';
-    btnAddToWatchedEl.classList.toggle('.js-remove');
   });
 }
 
@@ -32,8 +27,15 @@ function addToLocalStorage(data) {
   if (!getLocalStorage.find(el => el.id === data.id)) {
     getLocalStorage.push(data);
     localStorage.setItem('watched', JSON.stringify(getLocalStorage));
+    btnAddToWatchedEl.textContent = 'Remove from watched';
+  } else {
+    btnAddToWatchedEl.textContent = 'Add to watched';
+
+    const index = getLocalStorage.findIndex(el => el.id === data.id);
+
+    getLocalStorage.splice(index, 1);
+    localStorage.setItem('watched', JSON.stringify(getLocalStorage));
   }
-  console.log('Data ls', getLocalStorage);
 }
 
 // // если использовать id
