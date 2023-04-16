@@ -5,3 +5,4 @@ import './js/trending';
 import './js/btnUp';
 import './js/footerModal';
 import './js/ourTeam';
+import './js/trailer';
