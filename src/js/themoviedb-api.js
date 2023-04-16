@@ -7,17 +7,16 @@ export class ThemoviedbAPI {
   searchPath = '/search/movie';
 
   query = null;
-  page = 1;
 
   baseSearchParams = {
     api_key: this.#API_KEY,
     searchPath: this.searchPath,
   };
 
-  async fetchMovie() {
+  async fetchMovie(page = 1) {
     const searchParams = new URLSearchParams({
       query: this.query,
-      page: this.page,
+      page: page,
       ...this.baseSearchParams,
     });
 

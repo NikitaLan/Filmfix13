@@ -1,22 +1,14 @@
-import {getGenres} from './createGenres';
 import { getTrendFilmData } from './fetchTrending';
-import { renderTrendGallery } from './renderingCardMarkup';
-import { createCustomProperties } from './customPropertiesToResults';
+import { Paginator } from './pagination';
 
 document.addEventListener('DOMContentLoaded', startPage);
+const gallaryListEl = document.querySelector('.gallery-home__list');
 
-async function startPage() {
+async function startPage(page) {
   try {
-    const { results } = await getTrendFilmData(1);
-    const allGenres = getGenres();
-
-    const fullTrendData = createCustomProperties(results, allGenres);
-
-    // const size = defineResultsPerPage(); --- пагинация
-    renderTrendGallery(fullTrendData);
+    let paginator = new Paginator(gallaryListEl, getTrendFilmData);
+    await paginator.initPaginator();
   } catch (error) {
     console.error('Smth wrong with start page fetch' + error);
   }
 }
-
-
