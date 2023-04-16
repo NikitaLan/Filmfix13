@@ -1,4 +1,11 @@
-export function createGenresFromTrend(array, genres) {
+import { allGenres } from './allGenresList';
+
+export const getGenres = function getGenres() {
+  const { genres } = allGenres;
+  return genres;
+}
+
+export const createGenresFromTrend = function createGenresFromTrend(array, genres) {
   const genresArray = array
     .map(id => genres.filter(element => element.id === id))
     .flat();

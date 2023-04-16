@@ -1,4 +1,4 @@
-import { allGenres } from './allGenresList';
+import {getGenres} from './createGenres';
 import { getTrendFilmData } from './fetchTrending';
 import { renderTrendGallery } from './renderingCardMarkup';
 import { createCustomProperties } from './customPropertiesToResults';
@@ -19,7 +19,4 @@ async function startPage() {
   }
 }
 
-function getGenres() {
-  const { genres } = allGenres;
-  return genres;
-}
+

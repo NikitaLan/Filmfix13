@@ -1,6 +1,10 @@
 import Notiflix from 'notiflix';
 import { ThemoviedbAPI } from './themoviedb-api';
-import createGalleryCards from '../templates/gallery-card.hbs';
+import cardMarkup from '../js/cardMarkup.hbs';
+import {getGenres} from './createGenres';
+import { createCustomProperties } from './customPropertiesToResults';
+
+// import createGalleryCards from '../templates/gallery-card.hbs';
 
 const searchFormEl = document.querySelector('#search-form');
 const gallaryListEl = document.querySelector('.gallery-home__list');
@@ -33,20 +37,26 @@ const handleSearchFormSubmit = async event => {
   event.currentTarget.elements.searchQuery.value = '';
 
   try {
-    const data = await fetchMovie();
+    const {results, total_results} = await fetchMovie();
 
-    console.log(data);
+    console.log(results);
 
-    if (!data.results.length) {
+    if (!results.length) {
       Notiflix.Notify.warning(
         'Sorry, there are no movies matching your search query. Please try again.'
       );
       return;
     }
+ 
+    
 
-    Notiflix.Notify.success(`Hooray! We found ${data.total_results} movies.`);
+    Notiflix.Notify.success(`Hooray! We found ${total_results} movies.`);
 
-    gallaryListEl.innerHTML = createGalleryCards(data.results);
+    
+      const allGenres = getGenres();
+      const fullTrendData = createCustomProperties(results, allGenres);
+      gallaryListEl.innerHTML = cardMarkup(fullTrendData);
+  
   } catch (error) {
     console.error(error);
     Notiflix.Notify.failure(error.message);
