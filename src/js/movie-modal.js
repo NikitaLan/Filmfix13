@@ -1,13 +1,12 @@
 'use strict';
 import axios from 'axios';
+import modalMoviePlaceholder from '../images/noImage-placeholder.jpg';
 
 const refs = {
     movieModal: document.querySelector("[data-modal]"),                            //<div>
     closeMovieModalBtn: document.querySelector("[data-modal-close]"),              //<button>
-    addToWatchedBtn: document.querySelector ('.modal-movie__add-to-watched-btn'),  //<button>
-    addToQueueBtn: document.querySelector('.modal-movie__add-to-queue-btn'),       //<button>
-    sectionForRenderIn: document.querySelector('.modal-movie__content'),           //<section>
     galleryTrendList: document.querySelector('.gallery-home__list'),               //<ul> з трендовими фільмами
+    sectionForRenderIn: document.querySelector('.modal-movie__content'),           //<section>
 };
 
 refs.galleryTrendList.addEventListener('click', handleTrandingMoviesClick);        //<ul> з трендовими фільмами
@@ -15,7 +14,7 @@ refs.galleryTrendList.addEventListener('click', handleTrandingMoviesClick);     
 async function handleTrandingMoviesClick(event) {  // в результаті кліку на будь-яку картку фільму:
     let pickedMovieId = event.target.dataset.id;
 
-    dataModalFilm = fetchPictures(pickedMovieId); // для использования в add-to-watcchet,js
+    dataModalFilm = fetchPictures(pickedMovieId); // для использования в add-to-watched.js
     
     if (event.target.nodeName !== "IMG" && event.target.nodeName !== "P" && event.target.nodeName !== "H2" && event.target.nodeName !== "H3" && event.target.nodeName !== "B") {
         return;
@@ -48,7 +47,6 @@ async function handleTrandingMoviesClick(event) {  // в результаті к
     } catch(err) {
         console.log(err);
     }
-
     document.body.style.overflow = 'hidden'; //щоб body не скролився при відкритій модалці
 }
 
@@ -57,7 +55,7 @@ async function handleTrandingMoviesClick(event) {  // в результаті к
 const BASE_URL = 'https://api.themoviedb.org/3/movie/';
 const API_KEY = '3dd9518c386fd347d5f1ac2580a699a4';
 
-let dataModalFilm = {}; // для использования в add-to-watcchet,js
+let dataModalFilm = {}; // для использования в add-to-watched.js
 
 const fetchPictures = async (pickedMovieId) => {
     try {
@@ -73,10 +71,18 @@ const fetchPictures = async (pickedMovieId) => {
 function renderCardMarkup(poster_path, vote_average, vote_count, popularity, original_title, eachGenre, overview) {
     return `
     <div class="modal-movie__poster-wrapper"> 
-        <img class="modal-movie__poster" src="https://image.tmdb.org/t/p/original/${poster_path}" alt="movie poster">
+        ${ 
+            poster_path    // рендер по умові
+            ? `<img class="modal-movie__poster" src="https://image.tmdb.org/t/p/original/${poster_path}" alt="movie poster">`
+            : `<img class="modal-movie__poster" src="${modalMoviePlaceholder}" alt="movie placeholder">`
+        }
     </div>
     <div>
-        <h2 class="modal-movie__title">${original_title}</h2>
+        ${
+            original_title.length === 0
+            ? `<h2 class="modal-movie__title">Not found</h2>`
+            : `<h2 class="modal-movie__title">${original_title}</h2>`
+        }
         <ul>
             <li class="modal-movie__meta-wrapper">
                 <p class="modal-movie__meta">Vote / Votes</p>
@@ -86,31 +92,48 @@ function renderCardMarkup(poster_path, vote_average, vote_count, popularity, ori
             </li>
             <li class="modal-movie__meta-wrapper">
                 <p class="modal-movie__meta">Popularity</p>
-                <span class="modal-movie__meta-data" style="line-height: 14.06px")>${popularity}</span>
+                ${
+                    popularity.length === 0
+                    ? `<span class="modal-movie__meta-data" style="line-height: 14.06px")>Not found</span>`
+                    : `<span class="modal-movie__meta-data" style="line-height: 14.06px")>${popularity}</span>`
+                }
             </li>
             <li class="modal-movie__meta-wrapper">
                 <p class="modal-movie__meta">Original Title</p>
-                <span class="modal-movie__meta-data" style="text-transform: uppercase">${original_title}</span>
+                ${
+                    original_title.length === 0
+                    ? `<span class="modal-movie__meta-data" style="text-transform: uppercase">Not found</span>`
+                    : `<span class="modal-movie__meta-data" style="text-transform: uppercase">${original_title}</span>`
+                }
             </li>
             <li class="modal-movie__meta-wrapper">
                 <p class="modal-movie__meta">Genre</p>
-                <span class="modal-movie__meta-data">${eachGenre}</span>
+                ${
+                    eachGenre.length === 0 
+                    ? `<span class="modal-movie__meta-data">Not found</span>`
+                    : `<span class="modal-movie__meta-data">${eachGenre}</span>`
+                }
             </li>
         </ul>
         <h3 class="modal-movie__header-overview">About</h3>
-        <p class="modal-movie__text-overview">${overview}</p> 
+        ${
+            overview.length === 0
+            ? `<p class="modal-movie__text-overview">Not found</p>`
+            : `<p class="modal-movie__text-overview">${overview}</p>`
+        }
     </div>
     `;
 }
 
+
 // Закриття модалки
 
-function handleBackdropClick(event) {               //клікнувши на бекдроп 
+function handleBackdropClick(event) {                 //слухач на модалці для кліка на бекдроп 
     if(event.currentTarget === event.target) {
-        refs.movieModal.classList.add("is-hidden"); 
-    }
-    document.body.style.overflow = 'visible';       //щоб body почав скролитися після закриття модалки
-    removeEventListeners();
+        refs.movieModal.classList.add("is-hidden");   //закрий модалку
+        document.body.style.overflow = 'visible';     //body почне скролитися після закриття модалки
+        removeEventListeners();
+    } 
 }
 
 function handleCloseMovieModalBtnClick() {          //клікнувши на кнопку       
@@ -136,4 +159,4 @@ function removeEventListeners() {
 }
 
 
-export { dataModalFilm }; // для использования в add-to-watcchet,js
+export { dataModalFilm }; // для использования в add-to-watched.js
