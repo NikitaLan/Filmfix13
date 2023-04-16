@@ -12,8 +12,12 @@ export const createGenresFromTrend = function createGenresFromTrend(array, genre
 
   if (genresArray.length > 2) {
     let newArray = genresArray.slice(0, 2);
-    return newArray.map(el => el.name).join(', ') + ', Other';
-  } else {
+    return newArray.map(el => {console.log(el)
+     return el.name}).join(', ') + ', Other';
+  } else if (genresArray.length == 0) {
+    return "Not found"
+  }
+  else {
     return genresArray.map(el => el.name).join(', ');
   }
 }
