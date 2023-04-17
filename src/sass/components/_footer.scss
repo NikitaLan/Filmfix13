@@ -114,13 +114,23 @@ background-color: var(--color-bg);
   top: 50%;
  left: 50%;
   transform: translate(-45%, -45%);
-
-  .modal__button-close:focus > &,
-  .modal__button-close:hover > &{
-    fill: red;
-    cursor: pointer;
-  }
 }
+
+.modal__icon-close:focus ,
+.modal__icon-close:hover {
+    outline: none;
+    box-shadow: 10px 10px 15px rgba(0,0,0,0.3);
+    border-radius: 50%;
+}
+
+.modal__cross{
+  display: inline;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+
 .team{
   position: relative;
   text-align: center;
@@ -183,11 +193,11 @@ color: var(--color-accent);}
     @media screen and (min-width: 768px) and (max-width: 1199px){
 width: 100%;
 flex-basis: calc((100% - 1 * 32px) / 2);
-margin-right: 32px;
-margin-bottom: 32px;
+margin-right: 5px;
+margin-bottom: 15px;
 &:not(:last-child) {
-  margin-bottom: 32px;
-  margin-right: 32px;
+  margin-bottom: 15px;
+  margin-right: 5px;
 }
 
 &:nth-child(2n) {
@@ -206,8 +216,8 @@ margin-bottom: 32px;
 
     @media screen and (min-width: 1200px){
       flex-basis: calc((100% - 3 * 16px) / 4);
-    margin-right: 16px;
-    margin-bottom: 32px;
+    margin-right: 5px;
+    margin-bottom: 15px;
 
     &:nth-child(4n) {
       margin-right: 0;
