@@ -221,6 +221,7 @@
     padding-top: 11px;
     padding-bottom: 11px;
     padding-left: 16px;
+    padding-right: 38px;
     margin: 0;
 
     font-size: 14px;
@@ -230,6 +231,7 @@
   @include desktop {
     padding-top: 13px;
     padding-bottom: 13px;
+    padding-right: 38px;
   }
  
 }
