@@ -1,9 +1,7 @@
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
-import createCustomProperties from './customPropertiesToResults';
-import cardMarkup from '../js/cardMarkup.hbs';
-import { createCustomProperties } from './customPropertiesToResults';
-import { getGenres } from './createGenres';
+import {makeGalleryMarkUp} from '../js/makeGalleryMarkUpCard'
+import makeRatingColor from './ratingColor'
 
 export class Paginator {
   paginationEl = document.getElementById('pagination');
@@ -47,14 +45,14 @@ export class Paginator {
     return this.data;
   }
 
-  render() {
-    const allGenres = getGenres();
-    const fullTrendData = createCustomProperties(this.data.results, allGenres);
-    this.renderContainer.innerHTML = cardMarkup(fullTrendData);
+  render(data) {
+    this.renderContainer.innerHTML = makeGalleryMarkUp(data.results);
+    makeRatingColor();
   }
 
   async initPaginator() {
     this.data = await this.fetchCallback(1);
+    console.log(this.data);
 
     if (this.data.results.length === 0) {
       this.paginationEl.style = 'display: none;';
@@ -65,11 +63,11 @@ export class Paginator {
     this.options.totalItems = this.data.total_results;
     this.paginator = new Pagination(this.paginationEl, this.options);
 
-    this.render();
+    this.render(this.data);
     
     this.paginator.on('beforeMove', async event => {
       this.data = await this.fetchCallback(event.page);
-      this.render();
+      this.render(this.data);
     });
   }
 }

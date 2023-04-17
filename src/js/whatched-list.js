@@ -1,5 +1,3 @@
-import cardMarkup from './cardMarkup.hbs';
-
 const refs = {
   watchedBtn: document.querySelector('.btn-watched'),
   watchedList: document.querySelector('.gallery-library__list'),

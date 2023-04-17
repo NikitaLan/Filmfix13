@@ -1,7 +1,7 @@
 // import basicLightbox from 'basiclightbox';
 const trailerBtn = document.querySelector('.modal-movie__trailer-btn');
  
-trailerBtn.addEventListener('click', handleTrailerBtnClick)
+// trailerBtn.addEventListener('click', handleTrailerBtnClick)
 
 
 // function handleTrailerBtnClick(trailerKey) {
