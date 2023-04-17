@@ -1,6 +1,5 @@
 // console.log('💙💛 Koshyk Kostiantyn');
 
-// получаем объект с свойствами данных фильма из модального окна
 import { dataModalFilm } from '/src/js/movie-modal';
 
 const btnAddToWatchedEl = document.querySelector(
@@ -11,40 +10,50 @@ btnAddToWatchedEl.addEventListener('click', onAddFilmToWatched);
 
 function onAddFilmToWatched() {
   dataModalFilm.then(data => {
-    console.log('then', data);
+    let getLocalStorage = loadFromLocalStorage('watched');
 
-    if (localStorage.getItem('watched') === null) {
-      localStorage.setItem('watched', '[]');
+    if (!getLocalStorage.includes(data.id)) {
+      getLocalStorage.push(data.id);
+      saveToLocalStorage('watched', getLocalStorage);
+
+      renameBtn('Remove from watched');
+    } else {
+      const index = getLocalStorage.findIndex(el => el === data.id);
+
+      getLocalStorage.splice(index, 1);
+      localStorage.setItem('watched', JSON.stringify(getLocalStorage));
+
+      renameBtn('Add to watched');
     }
-
-    addToLocalStorage(data);
   });
 }
 
-function addToLocalStorage(data) {
-  let getLocalStorage = JSON.parse(localStorage.getItem('watched'));
-
-  if (!getLocalStorage.find(el => el.id === data.id)) {
-    getLocalStorage.push(data);
-    localStorage.setItem('watched', JSON.stringify(getLocalStorage));
-    btnAddToWatchedEl.textContent = 'Remove from watched';
-  } else {
-    btnAddToWatchedEl.textContent = 'Add to watched';
-
-    const index = getLocalStorage.findIndex(el => el.id === data.id);
-
-    getLocalStorage.splice(index, 1);
-    localStorage.setItem('watched', JSON.stringify(getLocalStorage));
+// функция добавляяет в Local Storage
+export function saveToLocalStorage(key, value) {
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+  } catch (error) {
+    console.error(error.message);
   }
 }
 
-// // если использовать id
-// function addToLocalStorage(data) {
-//   let getLocalStorage = JSON.parse(localStorage.getItem('watched'));
+// функция читает из Local Storage
+export function loadFromLocalStorage(key) {
+  try {
+    return null ? undefined : JSON.parse(localStorage.getItem(key));
+  } catch (error) {
+    console.error('Hi', error.message);
+  }
+}
 
-//   if (!getLocalStorage.includes(data)) {
-//     getLocalStorage.push(data);
-//     localStorage.setItem('watched', JSON.stringify(getLocalStorage));
-//   }
-//   console.log('Data ls', getLocalStorage);
-// }
+// функция переименовывает кнопку
+export function renameBtn(nameBtn) {
+  btnAddToWatchedEl.textContent = nameBtn;
+}
+
+// содает пустой массив в Local Storage, если такой отсутствует
+export function createArrayLocalStorage() {
+  if (localStorage.getItem('watched') === null) {
+    localStorage.setItem('watched', '[]');
+  }
+}
