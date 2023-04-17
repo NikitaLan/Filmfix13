@@ -28,7 +28,9 @@ const refs = {
   watchedBtn: document.querySelector('.btn-watched'),
   watchedList: document.querySelector('.gallery-library__list'),
   textOoops: document.querySelector('.empty'),
-  loader: document.querySelector,
+  loader: document.querySelector('wrapper'),
+  myLibraryBtn: document.querySelector('.btn-mylibrary'),
+  hrefMyLib: document.querySelector('.href-mylib'),
 };
 
 const STORAGE_KEY = 'watched';
@@ -53,9 +55,18 @@ async function getMovieInfoById(movieID) {
 }
 
 refs.watchedBtn.addEventListener('click', takeListFromStorage);
+refs.myLibraryBtn.addEventListener('click', onLibraryBtnClick);
+
+function onLibraryBtnClick(e) {
+  e.preventDefault();
+  takeListFromStorage();
+  // refs.textOoops.classList.add('visually-hidden');
+  // refs.watchedList.classList.remove('visually-hidden');
+}
 
 function takeListFromStorage() {
   console.log('click on btn Watched');
+  refs.watchedList.innerHTML = '';
   const listFromStorage = load(STORAGE_KEY);
   listFromStorage.map(el => {
     getMovieInfoById(el).then(data => {
