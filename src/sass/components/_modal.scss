@@ -38,7 +38,7 @@
   @media screen and (max-width: 768px) {
     // для скрола модалки
     display: block;
-    max-height: calc(100vh - 15px);
+    max-height: calc(100vh - 20px);
     overflow-y: auto;
     scroll-behavior: smooth;
   }
@@ -103,6 +103,9 @@
   }
 
   &__content {
+    @media screen and (max-width: 767px) {
+      margin-bottom: 20px;
+    } 
     @include tablet {
       display: flex;
     }
@@ -134,6 +137,10 @@
       width: 100%;
       height: 100%;
     }
+  }
+
+  &__container {
+    height: 100%;
   }
 
   &__title {
@@ -194,28 +201,26 @@
   }
 
   &__text-overview {
-    margin-bottom: 20px;
     line-height: 20px;
+
     @include tablet {
       width: 264px;
+      max-height: 220px;
+      overflow-y: auto;
+
     }
     @include desktop {
       width: 391px;
+      max-height: 257px;
     }
   }
 
   // ----------------- Кнопки -------------------------
-  &__command-btns-wrap {
+  &__command-btns-wrap {  // координати в movie-modal.js
     display: flex;
 
     @include tablet {
       position: absolute;
-      right: 72px;
-      bottom: 64px;
-    }
-    @include desktop {
-      right: 88px;
-      bottom: 113px;
     }
   }
 
