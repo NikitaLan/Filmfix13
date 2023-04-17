@@ -1,5 +1,3 @@
-import cardMarkup from './cardMarkup.hbs';
-
 const refs = {
   queueBtn: document.querySelector('.btn-queue'),
   queueList: document.querySelector('.gallery-library__list'),
