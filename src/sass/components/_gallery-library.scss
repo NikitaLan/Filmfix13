@@ -46,3 +46,20 @@ padding-bottom: 20px;
         font-size: 40px;
     }
 }
+
+.gallery-library__list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -20px;
+    margin-top: -20px;
+
+    @include tablet {
+        margin-left: -32px;
+        margin-top: -32px;
+    }
+
+    @include desktop {
+        margin-left: -16px;
+        margin-top: -32px;
+    }
+}
