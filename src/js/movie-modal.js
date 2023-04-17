@@ -12,6 +12,7 @@ const refs = {
   galleryTrendList: document.querySelector('.gallery-home__list'), //<ul> з трендовими фільмами
   sectionForRenderIn: document.querySelector('.modal-movie__content'), //<section>
   btnAddToWatched: document.querySelector('.modal-movie__add-to-watched-btn'), // 💙💛 Koshyk Kostiantyn
+  btnQueue: document.querySelector('.modal-movie__add-to-queue-btn'), // 💙💛 Koshyk Kostiantyn
 };
 
 refs.galleryTrendList.addEventListener('click', handleTrandingMoviesClick); //<ul> з трендовими фільмами
@@ -20,15 +21,25 @@ async function handleTrandingMoviesClick(event) {
   // в результаті кліку на будь-яку картку фільму:
   let pickedMovieId = event.target.dataset.id;
 
-  createArrayLocalStorage(); // 💙💛 Koshyk Kostiantyn
+  createArrayLocalStorage('watched'); // 💙💛 Koshyk Kostiantyn
+  createArrayLocalStorage('queue'); // 💙💛 Koshyk Kostiantyn
+  renameBtn(
+    refs.btnAddToWatched,
+    'watched',
+    'Add to watched',
+    'Remove from watched',
+    pickedMovieId
+  ); // 💙💛 Koshyk Kostiantyn
+  renameBtn(
+    refs.btnQueue,
+    'queue',
+    'Add to queue',
+    'Remove from queue',
+    pickedMovieId
+  ); // 💙💛 Koshyk Kostiantyn
 
-  if (!loadFromLocalStorage('watched').includes(Number(pickedMovieId))) {
-    refs.btnAddToWatched.textContent = 'Add to watched';
-  } else {
-    refs.btnAddToWatched.textContent = 'Remove from watched';
-  } // 💙💛 Koshyk Kostiantyn
-
-  dataModalFilm = fetchPictures(pickedMovieId); // 💙💛 Koshyk Kostiantyn (для использования в add-to-watched.js)
+  // 💙💛 Koshyk Kostiantyn (для использования в add-to-watched.js)
+  dataModalFilm = fetchPictures(pickedMovieId);
 
   if (
     event.target.nodeName !== 'IMG' &&
@@ -212,4 +223,14 @@ function removeEventListeners() {
   window.removeEventListener('keydown', handleMovieModalKeyPress);
 }
 
-export { dataModalFilm, refs }; // 💙💛 Koshyk Kostiantyn (для использования в add-to-watched.js)
+// 💙💛 Koshyk Kostiantyn функция изменяет название кнопки
+function renameBtn(btn, key, nameA, nameB, id) {
+  if (!loadFromLocalStorage(key).includes(Number(id))) {
+    btn.textContent = nameA;
+  } else {
+    btn.textContent = nameB;
+  }
+}
+
+// 💙💛 Koshyk Kostiantyn (для использования в add-to-watched.js)
+export { dataModalFilm, refs };

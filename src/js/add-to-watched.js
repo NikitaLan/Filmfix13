@@ -5,8 +5,10 @@ import { dataModalFilm } from '/src/js/movie-modal';
 const btnAddToWatchedEl = document.querySelector(
   '.modal-movie__add-to-watched-btn'
 );
+const btnQueue = document.querySelector('.modal-movie__add-to-queue-btn');
 
 btnAddToWatchedEl.addEventListener('click', onAddFilmToWatched);
+btnQueue.addEventListener('click', onQueue);
 
 function onAddFilmToWatched() {
   dataModalFilm.then(data => {
@@ -16,20 +18,40 @@ function onAddFilmToWatched() {
       getLocalStorage.push(data.id);
       saveToLocalStorage('watched', getLocalStorage);
 
-      renameBtn('Remove from watched');
+      renameBtn(btnAddToWatchedEl, 'Remove from watched');
     } else {
       const index = getLocalStorage.findIndex(el => el === data.id);
 
       getLocalStorage.splice(index, 1);
       localStorage.setItem('watched', JSON.stringify(getLocalStorage));
 
-      renameBtn('Add to watched');
+      renameBtn(btnAddToWatchedEl, 'Add to watched');
+    }
+  });
+}
+
+function onQueue() {
+  dataModalFilm.then(data => {
+    let getLocalStorage = loadFromLocalStorage('queue');
+
+    if (!getLocalStorage.includes(data.id)) {
+      getLocalStorage.push(data.id);
+      saveToLocalStorage('queue', getLocalStorage);
+
+      renameBtn(btnQueue, 'Remove from queue');
+    } else {
+      const index = getLocalStorage.findIndex(el => el === data.id);
+
+      getLocalStorage.splice(index, 1);
+      localStorage.setItem('queue', JSON.stringify(getLocalStorage));
+
+      renameBtn(btnQueue, 'Add to queue');
     }
   });
 }
 
 // функция добавляяет в Local Storage
-export function saveToLocalStorage(key, value) {
+function saveToLocalStorage(key, value) {
   try {
     localStorage.setItem(key, JSON.stringify(value));
   } catch (error) {
@@ -47,13 +69,13 @@ export function loadFromLocalStorage(key) {
 }
 
 // функция переименовывает кнопку
-export function renameBtn(nameBtn) {
-  btnAddToWatchedEl.textContent = nameBtn;
+function renameBtn(btn, nameBtn) {
+  btn.textContent = nameBtn;
 }
 
 // содает пустой массив в Local Storage, если такой отсутствует
-export function createArrayLocalStorage() {
-  if (localStorage.getItem('watched') === null) {
-    localStorage.setItem('watched', '[]');
+export function createArrayLocalStorage(key) {
+  if (localStorage.getItem(key) === null) {
+    localStorage.setItem(key, '[]');
   }
 }
