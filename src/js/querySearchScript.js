@@ -1,23 +1,21 @@
 import Notiflix from 'notiflix';
 import { ThemoviedbAPI } from './themoviedb-api';
-import cardMarkup from '../js/cardMarkup.hbs';
-import {getGenres} from './createGenres';
-import { createCustomProperties } from './customPropertiesToResults';
-import makeRatingColor from './ratingColor'
-
-// import createGalleryCards from '../templates/gallery-card.hbs';
+import { Paginator } from './pagination';
 
 const searchFormEl = document.querySelector('#search-form');
 const gallaryListEl = document.querySelector('.gallery-home__list');
 
+let paginator;
 let currentQuery = '';
 
 const themoviedbAPI = new ThemoviedbAPI();
 
-const fetchMovie = async () => {
+const fetchMovie = async (page) => {
   try {
-    const data = await themoviedbAPI.fetchMovie();
+    const data = await themoviedbAPI.fetchMovie(page);
+
     return data;
+
   } catch (error) {
     console.error(error);
     Notiflix.Notify.failure(error.message);
@@ -34,32 +32,24 @@ const handleSearchFormSubmit = async event => {
   }
 
   themoviedbAPI.query = currentQuery;
-
   event.currentTarget.elements.searchQuery.value = '';
 
   try {
-    const {results, total_results} = await fetchMovie();
+    paginator = new Paginator(gallaryListEl, fetchMovie);
+    await paginator.initPaginator();
+    let results = paginator.getResults();
 
     console.log(results);
 
-    if (!results.length) {
+    if (!results.results.length) {
       Notiflix.Notify.warning(
         'Sorry, there are no movies matching your search query. Please try again.'
       );
       return;
     }
- 
-    
 
-    Notiflix.Notify.success(`Hooray! We found ${total_results} movies.`);
+    Notiflix.Notify.success(`Hooray! We found ${results.total_results} movies.`);
 
-    
-      const allGenres = getGenres();
-      const fullTrendData = createCustomProperties(results, allGenres);
-      gallaryListEl.innerHTML = cardMarkup(fullTrendData);
-      makeRatingColor();
-
-  
   } catch (error) {
     console.error(error);
     Notiflix.Notify.failure(error.message);
