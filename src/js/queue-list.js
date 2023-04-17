@@ -4,7 +4,6 @@ const refs = {
   queueBtn: document.querySelector('.btn-queue'),
   queueList: document.querySelector('.gallery-library__list'),
   textOoops: document.querySelector('.empty'),
-  // loader: document.querySelector('wrapper'),
   myLibraryBtn: document.querySelector('.btn-mylibrary'),
   hrefMyLib: document.querySelector('.href-mylib'),
 };
@@ -31,18 +30,9 @@ async function getMovieInfoById(movieID) {
 }
 
 refs.queueBtn.addEventListener('click', takeListFromStorage);
-// refs.myLibraryBtn.addEventListener('click', takeListFromStorage);
 
-// function onLibraryBtnClick() {
-//   e.preventDefault();
-//   takeListFromStorage(e);
-//   refs.textOoops.classList.add('visually-hidden');
-//   refs.watchedList.classList.remove('visually-hidden');
-// }
-
-function takeListFromStorage(e) {
-  // e.preventDefault();
-  console.log('click on btn Queue');
+function takeListFromStorage() {
+  // console.log('click on btn Queue');
   refs.queueList.innerHTML = '';
   const listFromStorage = load(STORAGE_KEY);
   listFromStorage.map(el => {
@@ -55,13 +45,6 @@ function takeListFromStorage(e) {
     });
   });
 
-  // const listFromStorage = localStorage.getItem(STORAGE_KEY);
-  // watchedList = JSON.parse(listFromStorage);
-  // console.log(watchedList.results);
-  // refs.watchedList.insertAdjacentHTML(
-  //   'afterbegin',
-  //   cardMarkup(watchedList.results)
-  // );
   refs.textOoops.classList.add('visually-hidden');
   refs.queueList.classList.remove('visually-hidden');
 }
