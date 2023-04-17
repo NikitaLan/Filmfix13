@@ -4,6 +4,7 @@ import modalMoviePlaceholder from '../images/noImage-placeholder.jpg';
 import {
   createArrayLocalStorage,
   loadFromLocalStorage,
+  removeLocalStorage,
 } from '/src/js/add-to-watched'; // 💙💛 Koshyk Kostiantyn
 
 const refs = {
@@ -16,6 +17,9 @@ const refs = {
 };
 
 refs.galleryTrendList.addEventListener('click', handleTrandingMoviesClick); //<ul> з трендовими фільмами
+
+removeLocalStorage('watched'); // 💙💛 Koshyk Kostiantyn
+removeLocalStorage('queue'); // 💙💛 Koshyk Kostiantyn
 
 async function handleTrandingMoviesClick(event) {
   // в результаті кліку на будь-яку картку фільму:

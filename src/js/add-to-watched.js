@@ -79,3 +79,9 @@ export function createArrayLocalStorage(key) {
     localStorage.setItem(key, '[]');
   }
 }
+// Удаляет пустой массив в LocalStorage, если он пуст
+export function removeLocalStorage(key) {
+  if (localStorage.getItem(key) === '[]') {
+    localStorage.removeItem(key);
+  }
+}
