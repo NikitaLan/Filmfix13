@@ -231,8 +231,10 @@ function removeEventListeners() {
 function renameBtn(btn, key, nameA, nameB, id) {
   if (!loadFromLocalStorage(key).includes(Number(id))) {
     btn.textContent = nameA;
+    btn.classList.remove('active-btn');
   } else {
     btn.textContent = nameB;
+    btn.classList.add('active-btn');
   }
 }
 

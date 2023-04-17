@@ -1,282 +1,292 @@
 .backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.473);
-    opacity: 1;
-    -webkit-transition: opacity 350ms cubic-bezier(0.4, 0, 0.2, 1);
-    transition: opacity 350ms cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.473);
+  opacity: 1;
+  -webkit-transition: opacity 350ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 350ms cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 10;
+}
+
+.backdrop.is-hidden {
+  opacity: 0;
+  -webkit-transition: opacity 350ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 350ms cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.modal-movie {
+  background-image: radial-gradient(
+    circle at top right,
+    // rgba(185, 47, 44, 1) 10%,
+    rgba(185, 46, 44, 0.767) 10%,
+    rgba(25, 0, 255, 0) 50%
+  );
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%) scale(1);
+  transform: translate(-50%, -50%) scale(1);
+  background-color: var(--color-white);
+  min-width: 280px;
+  height: 930px;
+  padding: 48px 20px 40px 20px;
+
+  @media screen and (max-width: 768px) {
+    // для скрола модалки
+    display: block;
+    max-height: calc(100vh - 15px);
+    overflow-y: auto;
+    scroll-behavior: smooth;
   }
 
-  .backdrop.is-hidden {
-    opacity: 0;
-    -webkit-transition: opacity 350ms cubic-bezier(0.4, 0, 0.2, 1);
-    transition: opacity 350ms cubic-bezier(0.4, 0, 0.2, 1);
-    pointer-events: none;
+  @include tablet {
+    min-width: 704px;
+    height: 552px;
+    padding: 40px 72px 64px 36px;
+  }
+  @include desktop {
+    min-width: 806px;
+    height: 558px;
+    padding: 40px 12px;
   }
 
-  .modal-movie {
-    background-image: radial-gradient(
-        circle at top right,
-        // rgba(185, 47, 44, 1) 10%,
-        rgba(185, 46, 44, 0.767) 10%,
-        rgba(25, 0, 255, 0) 50%
-      );
+  -webkit-transition: -webkit-transform 350ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: -webkit-transform 350ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 350ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 350ms cubic-bezier(0.4, 0, 0.2, 1),
+    -webkit-transform 350ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  border-radius: 4px;
+  -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12),
+    0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.backdrop.is-hidden .modal-movie {
+  -webkit-transform: translate(-50%, -50%) scale(0.9);
+  transform: translate(-50%, -50%) scale(0.9);
+  -webkit-transition: -webkit-transform 350ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: -webkit-transform 350ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 350ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 350ms cubic-bezier(0.4, 0, 0.2, 1),
+    -webkit-transform 350ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-movie {
+  &__close-btn {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%) scale(1);
-            transform: translate(-50%, -50%) scale(1);
-    background-color: var(--color-white);
-    min-width: 280px; 
-    height: 930px; 
-    padding: 48px 20px 40px 20px;
+    top: 8px;
+    right: 8px;
+    width: 30px;
+    height: 30px;
+    border-color: transparent;
+    background-color: transparent;
+  }
 
-    @media screen and (max-width: 768px) {
-        // для скрола модалки
-        display: block;
-        max-height: calc(100vh - 15px);
-        overflow-y: auto;
-        scroll-behavior: smooth;
+  &__icon-close {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    stroke-width: 0;
+    stroke: currentColor;
+    fill: currentColor;
+    &:hover,
+    &:focus {
+      stroke: var(--color-accent);
+      transition: stroke var(--animation);
     }
+  }
 
+  &__content {
     @include tablet {
-        min-width: 704px;
-        height: 552px;
-        padding: 40px 72px 64px 36px;
+      display: flex;
+    }
+  }
+
+  &__poster-wrapper {
+    box-shadow: 8px 10px 10px 0px rgba(0, 0, 0, 0.3);
+    @media screen and (max-width: 319px) {
+      width: 240px;
+      height: 357px;
+    }
+    @media screen and (max-width: 767px) {
+      margin-bottom: 20px;
+    }
+    @include tablet {
+      width: 264px;
+      height: 373.55px;
+      margin-right: 68px;
     }
     @include desktop {
-        min-width: 806px;
-        height: 558px;
-        padding: 40px 12px;
+      width: 375px;
+      height: 478px;
+      margin-right: 16px;
     }
-    
-    -webkit-transition: -webkit-transform 350ms cubic-bezier(0.4, 0, 0.2, 1);
-    transition: -webkit-transform 350ms cubic-bezier(0.4, 0, 0.2, 1);
-    transition: transform 350ms cubic-bezier(0.4, 0, 0.2, 1);
-    transition: transform 350ms cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 350ms cubic-bezier(0.4, 0, 0.2, 1);
-    
-    border-radius: 4px;
-    -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
-            box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
   }
 
-  .backdrop.is-hidden .modal-movie {
-    -webkit-transform: translate(-50%, -50%) scale(0.9);
-            transform: translate(-50%, -50%) scale(0.9);
-    -webkit-transition: -webkit-transform 350ms cubic-bezier(0.4, 0, 0.2, 1);
-    transition: -webkit-transform 350ms cubic-bezier(0.4, 0, 0.2, 1);
-    transition: transform 350ms cubic-bezier(0.4, 0, 0.2, 1);
-    transition: transform 350ms cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 350ms cubic-bezier(0.4, 0, 0.2, 1);
+  &__poster {
+    @include desktop {
+      width: 100%;
+      height: 100%;
+    }
   }
-  
-  
-.modal-movie {
-    &__close-btn {
-        position: absolute;
-        top: 8px;
-        right: 8px;
-        width: 30px;
-        height: 30px;
-        border-color: transparent;
-        background-color: transparent;
-    }
 
-    &__icon-close {
-        display: inline-block;
-        width: 30px;
-        height: 30px;
-        stroke-width: 0;
-        stroke: currentColor;
-        fill: currentColor;
-        &:hover,
-        &:focus {
-            stroke: var(--color-accent);
-            transition: stroke var(--animation);
-        }
+  &__title {
+    margin-bottom: 20px;
+    font-size: 20px;
+    @include desktop {
+      font-size: 30px;
     }
+    line-height: 23.44px;
+    @include desktop {
+      line-height: 35.16px;
+    }
+  }
+  &__meta-wrapper {
+    display: flex;
+    margin-bottom: 8px;
+  }
 
-    &__content {
-        @include tablet {
-            display: flex;
-        } 
+  &__meta {
+    line-height: 16px;
+    color: #8c8c8c;
+    width: 108px;
+    @media screen and (max-width: 670px) {
+      max-width: 75px;
     }
+    @include desktop {
+      width: 152px;
+    }
+  }
 
-    &__poster-wrapper {
-        box-shadow: 8px 10px 10px 0px rgba(0, 0, 0, 0.3);
-        @media screen and (max-width: 319px) { 
-            width: 240px;
-            height: 357px;
-        }
-        @media screen and (max-width: 767px) {
-            margin-bottom: 20px;        
-        }
-        @include tablet {
-            width: 264px;
-            height: 373.55px;
-            margin-right: 68px;
-        }
-        @include desktop {
-            width: 375px;
-            height: 478px;
-            margin-right: 16px;
-        }
-    }
+  &__meta-data {
+    line-height: 16px;
+  }
 
-    &__poster {
-        @include desktop {
-            width: 100%; 
-            height: 100%;
-        }
-    }
+  &__meta-data--red {
+    color: var(--color-white);
+    background-color: var(--color-accent);
+    border-radius: 5px;
+    padding: 1px 10px;
+    margin-right: 3px;
+    line-height: 14.06px;
+  }
+  &__meta-data--grey {
+    display: inline-block;
+    background-color: var(--color-bg);
+    background-color: #ebe5e59d;
+    border-radius: 5px;
+    padding: 1px 4px;
+    margin-left: 3px;
+    line-height: 14.06px;
+  }
 
-    &__title {
-        margin-bottom: 20px;
-        font-size: 20px; 
-        @include desktop {
-            font-size: 30px;           
-        }
-        line-height: 23.44px; 
-        @include desktop {
-            line-height: 35.16px;
-        }
-    }
-    &__meta-wrapper {
-        display: flex;
-        margin-bottom: 8px;
-    }
+  &__header-overview {
+    margin-top: 20px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    line-height: 16px;
+  }
 
-    &__meta {
-        line-height: 16px; 
-        color: #8C8C8C;
-        width: 108px;
-        @media screen and (max-width: 670px) {
-            max-width: 75px;
-        }  
-        @include desktop {
-            width: 152px; 
-        }
+  &__text-overview {
+    margin-bottom: 20px;
+    line-height: 20px;
+    @include tablet {
+      width: 264px;
     }
-
-    &__meta-data {
-        line-height: 16px; 
+    @include desktop {
+      width: 391px;
     }
+  }
 
-    &__meta-data--red {
-        color: var(--color-white);
-        background-color: var(--color-accent);
-        border-radius: 5px;
-        padding: 1px 10px;
-        margin-right: 3px;
-        line-height: 14.06px;
+  // ----------------- Кнопки -------------------------
+  &__command-btns-wrap {
+    display: flex;
+
+    @include tablet {
+      position: absolute;
+      right: 72px;
+      bottom: 64px;
     }
-    &__meta-data--grey {
-        display: inline-block;
-        background-color: var(--color-bg);
-        background-color: #ebe5e59d;
-        border-radius: 5px;
-        padding: 1px 4px;
-        margin-left: 3px;
-        line-height: 14.06px;
+    @include desktop {
+      right: 88px;
+      bottom: 113px;
     }
+  }
 
-    &__header-overview {
-        margin-top: 20px;
-        margin-bottom: 8px;
-        text-transform: uppercase;
-        line-height: 16px; 
+  &__command-btns {
+    cursor: pointer;
+    line-height: 14px;
+    text-transform: uppercase;
+    border-radius: 100px;
+    border: 1px dotted rgba(71, 8, 8, 0.404);
+    color: var(--color-accent);
+    background-color: rgba(185, 47, 44, 10%);
+
+    box-shadow: -10px -10px 30px 0 #fff, 10px 10px 30px 0 #1e0dda31;
+    transition: 0.2s;
+
+    &:hover,
+    &:focus {
+      color: var(--color-white);
+      background-color: var(--color-accent);
+      box-shadow: -15px -15px 30px 0 #fff, 15px 15px 30px 0 #1d0dca17;
+      border-color: transparent;
+      transition: background-color var(--animation), color var(--animation),
+        border-color var(--animation);
     }
+  }
 
-    &__text-overview {
-        margin-bottom: 20px;
-        line-height: 20px; 
-        @include tablet {
-            width: 264px;
-        }
-        @include desktop {
-           width: 391px;
-        }
+  &__add-to-watched-btn {
+    @media screen and (max-width: 320px) {
+      max-width: 125px;
+      padding-left: 12px;
+      padding-right: 12px;
+      margin-right: 4px;
     }
+    width: 125px;
+    height: 34px;
+    margin-right: 8px;
 
-// ----------------- Кнопки -------------------------
-    &__command-btns-wrap {
-        display: flex;
-
-        @include tablet {
-            position: absolute;
-            right: 72px;  
-            bottom: 64px;  
-        }
-        @include desktop {
-            right: 88px;  
-            bottom: 113px;       
-        }
+    @include tablet {
+      width: 137px;
+      height: 38px;
     }
-
-    &__command-btns {  
-        cursor: pointer;
-        line-height: 14px;
-        text-transform: uppercase;
-        border-radius: 100px;
-        border: 1px dotted rgba(71, 8, 8, 0.404);
-        color: var(--color-accent);
-        background-color: rgba(185, 47, 44, 10%);
-
-        box-shadow: -10px -10px 30px 0 #fff,10px 10px 30px 0 #1e0dda31;
-        transition: .2s;        
-        
-        &:hover,
-        &:focus {
-          color: var(--color-white);
-          background-color: var(--color-accent);
-          box-shadow: -15px -15px 30px 0 #fff, 15px 15px 30px 0 #1d0dca17;
-          border-color: transparent;
-          transition: background-color var(--animation), color var(--animation), border-color var(--animation);
-        }
+    @include desktop {
+      width: 165px;
+      height: 42px;
     }
-    
-    &__add-to-watched-btn {    
-        @media screen and (max-width: 320px) {
-            max-width: 125px;
-            padding-left: 12px;
-            padding-right: 12px;       
-            margin-right: 4px;     
-        }        
-        width: 125px;
-        height: 34px;
-        margin-right: 8px;
+  }
 
-        @include tablet {
-            width: 137px;
-            height: 38px;          
-        }
-        @include desktop {
-            width: 165px;
-            height: 42px;            
-        }
+  &__add-to-queue-btn {
+    @media screen and (max-width: 320px) {
+      max-width: 111px;
+      padding-left: 14px;
+      padding-right: 14px;
+      margin-right: 4px;
     }
+    width: 111px;
+    height: 34px;
+    margin-right: 8px;
 
-    &__add-to-queue-btn {
-        @media screen and (max-width: 320px) {
-            max-width: 111px;
-            padding-left: 14px;
-            padding-right: 14px;   
-            margin-right: 4px;          
-        }
-        width: 111px;
-        height: 34px;
-        margin-right: 8px;
-        
-        @include tablet {
-            width: 119px;
-            height: 38px;            
-        }
-        @include desktop {
-            width: 134px;
-            height: 42px;            
-        }
+    @include tablet {
+      width: 119px;
+      height: 38px;
     }
+    @include desktop {
+      width: 134px;
+      height: 42px;
+    }
+  }
+}
+
+.modal-movie__add-to-queue-btn.active-btn,
+.modal-movie__add-to-watched-btn.active-btn {
+  color: var(--color-white);
+  background-color: var(--color-accent);
 }
