@@ -28,6 +28,7 @@ const refs = {
   watchedBtn: document.querySelector('.btn-watched'),
   watchedList: document.querySelector('.gallery-library__list'),
   textOoops: document.querySelector('.empty'),
+  loader: document.querySelector,
 };
 
 const STORAGE_KEY = 'watched';
