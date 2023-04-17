@@ -47,7 +47,9 @@ export class Paginator {
   }
 
   render(data) {
-    this.renderContainer.innerHTML = makeGalleryMarkUp(data.results);
+    const result = data.results
+    const galleryMarkUp = result.map(makeGalleryMarkUp).join('')
+    this.renderContainer.innerHTML = galleryMarkUp;
     makeRatingColor();
     toPageTopOnClick();
   }
