@@ -19,6 +19,7 @@ function onAddFilmToWatched() {
       saveToLocalStorage('watched', getLocalStorage);
 
       renameBtn(btnAddToWatchedEl, 'Remove from watched');
+      btnAddToWatchedEl.classList.add('active-btn');
     } else {
       const index = getLocalStorage.findIndex(el => el === data.id);
 
@@ -26,6 +27,7 @@ function onAddFilmToWatched() {
       localStorage.setItem('watched', JSON.stringify(getLocalStorage));
 
       renameBtn(btnAddToWatchedEl, 'Add to watched');
+      btnAddToWatchedEl.classList.remove('active-btn');
     }
   });
 }
@@ -39,6 +41,8 @@ function onQueue() {
       saveToLocalStorage('queue', getLocalStorage);
 
       renameBtn(btnQueue, 'Remove from queue');
+
+      btnQueue.classList.add('active-btn');
     } else {
       const index = getLocalStorage.findIndex(el => el === data.id);
 
@@ -46,6 +50,7 @@ function onQueue() {
       localStorage.setItem('queue', JSON.stringify(getLocalStorage));
 
       renameBtn(btnQueue, 'Add to queue');
+      btnQueue.classList.remove('active-btn');
     }
   });
 }
