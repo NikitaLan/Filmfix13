@@ -15,6 +15,6 @@ function hideElOnScroll(el) {
   };
 }
 
-function toPageTopOnClick(e) {
+export function toPageTopOnClick(e) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }

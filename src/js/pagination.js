@@ -2,6 +2,7 @@ import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import {makeGalleryMarkUp} from '../js/makeGalleryMarkUpCard'
 import makeRatingColor from './ratingColor'
+import {toPageTopOnClick} from '../js/btnUp'
 
 export class Paginator {
   paginationEl = document.getElementById('pagination');
@@ -48,6 +49,7 @@ export class Paginator {
   render(data) {
     this.renderContainer.innerHTML = makeGalleryMarkUp(data.results);
     makeRatingColor();
+    toPageTopOnClick();
   }
 
   async initPaginator() {
