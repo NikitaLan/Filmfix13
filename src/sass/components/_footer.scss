@@ -125,12 +125,13 @@ background-color: var(--color-bg);
   position: relative;
   text-align: center;
   margin-bottom: 20px;
- 
+  padding-right: 100px;
+ color: var(--color-black);
 }
 
 .modal__container-list{
-  margin-top: 0;
-      padding-left: 110px;
+  margin-top: -20px;
+      padding-left: 150px;
       text-align: left;
       list-style: none;
       
@@ -143,7 +144,8 @@ background-color: var(--color-bg);
 }
 .modal__container-list-item
 { line-height:40px;
-  margin:0;}
+  margin:0;
+color: var(--color-accent);}
 
 .team__foto-img{
   border-radius: 25px;
@@ -157,15 +159,15 @@ background-color: var(--color-bg);
    border-radius: 15%;
 }
 .team__wrapper:hover{
-  transform: scale(1.05);
-   box-shadow: 10px 10px 15px rgba(0,0,0,0.3);}
+  transform: scale(1.05);}
+  //  box-shadow: 10px 10px 15px rgba(0,0,0,0.3);}
 
 .team__list{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   width: 100%;;
-  
+  margin-top: 60px;
 }
 
 .team__item{
@@ -229,7 +231,7 @@ margin-bottom: 32px;
   &:active,
   &:focus {
     scale: 1.03;
-    box-shadow: inset 1px 1px 2px #babecc, inset -1px -1px 2px #fff;
+    // box-shadow: inset 1px 1px 2px #babecc, inset -1px -1px 2px #fff;
   }
     }
   
@@ -262,8 +264,9 @@ margin-bottom: 32px;
 .sns-list__link{
 margin-bottom: 4px;}
 
-.sns-list__icon{
-  color: var(--color-accent);
+.sns-list__icon:hover,
+.sns-list__icon:focus{
+  fill: var(--color-accent);
 }
 
 .footer__link{
@@ -307,10 +310,9 @@ pointer-events: none;
 
 .modal__content{
   position: absolute;
-
+  margin-top: 15px;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 160px;
   overflow:hidden;
   font-size: 25px;
   line-height: 40px;
@@ -337,8 +339,7 @@ pointer-events: none;
   &:after, &:before {
     position: absolute;
     top: 0;
-    
-    color: white;
+    color: var(--color-accent);;
     font-size: 42px;
     line-height: 40px;
     
