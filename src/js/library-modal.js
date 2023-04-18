@@ -3,6 +3,7 @@
 import { handleModalOpenClose } from './movie-modal/handle-modal-close';
 import { fetchPictures } from './movie-modal/fetch-from-API';
 import { handleApiData } from './movie-modal/handle-API-data';
+import {PAGE_OPEN, renderList} from './whatched-list';
 
 import {
   createArrayLocalStorage,
@@ -89,6 +90,10 @@ function onAddFilmToWatched() {
 
       renameBtnTextCont(btnAddToWatchedEl, 'Remove from watched');
       btnAddToWatchedEl.classList.add('active-btn');
+     if(PAGE_OPEN === 1) {
+          renderList(getLocalStorage)
+     }
+  
     } else {
       const index = getLocalStorage.findIndex(el => el === data.id);
 
@@ -97,6 +102,9 @@ function onAddFilmToWatched() {
 
       renameBtnTextCont(btnAddToWatchedEl, 'Add to watched');
       btnAddToWatchedEl.classList.remove('active-btn');
+      if(PAGE_OPEN === 1) {
+        renderList(getLocalStorage)
+   }
     }
   });
 }
@@ -112,6 +120,9 @@ function onQueue() {
       renameBtnTextCont(btnQueue, 'Remove from queue');
 
       btnQueue.classList.add('active-btn');
+      if(PAGE_OPEN === 2) {
+        renderList(getLocalStorage)
+   }
     } else {
       const index = getLocalStorage.findIndex(el => el === data.id);
 
@@ -120,6 +131,9 @@ function onQueue() {
 
       renameBtnTextCont(btnQueue, 'Add to queue');
       btnQueue.classList.remove('active-btn');
+      if(PAGE_OPEN === 2) {
+        renderList(getLocalStorage)
+   }
     }
   });
 }
