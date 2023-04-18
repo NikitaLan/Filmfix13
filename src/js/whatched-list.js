@@ -55,7 +55,7 @@ function onLibWatchedBtnClick() {
         refs.watchedList.innerHTML = '';
         return
     } else if (watched.length === 0) {
-console.log(20);
+
 refs.textOoops.classList.add('visually-hidden');
 refs.watchedList.innerHTML = '';
          return;

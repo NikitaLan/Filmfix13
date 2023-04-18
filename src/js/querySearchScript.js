@@ -4,6 +4,7 @@ import { Paginator } from './pagination';
 
 const searchFormEl = document.querySelector('#search-form');
 const gallaryListEl = document.querySelector('.gallery-home__list');
+const textOoops = document.querySelector('.empty');
 
 let paginator;
 let currentQuery = '';
@@ -45,6 +46,8 @@ const handleSearchFormSubmit = async event => {
       Notiflix.Notify.warning(
         'Sorry, there are no movies matching your search query. Please try again.'
       );
+      textOoops.classList.remove('visually-hidden')
+
       return;
     }
 
