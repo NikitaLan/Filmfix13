@@ -1,19 +1,25 @@
 import noPosterImg from '../images/noImage-placeholder.jpg';
-import {createGenresFromTrend} from '../js/genre/createGenresFromTrend'
-import {createGenresFromLibrary} from '../js/genre/createGenresFromTrend'
+import { createGenresFromTrend } from '../js/genre/createGenresFromTrend';
+import { createGenresFromLibrary } from '../js/genre/createGenresFromTrend';
 function createYear(release_date) {
-    return release_date ? release_date.split('-')[0] : 'Not found';
-  }
+  return release_date ? release_date.split('-')[0] : 'Not found';
+}
 
-export const makeGalleryMarkUp = ({ genre_ids, release_date, vote_average, poster_path, title, id }) => {
-          const genre = createGenresFromTrend(genre_ids);
-          console.log(genre);
-          const filmYear = createYear(release_date);
-          const filmRate = vote_average.toFixed(1);
-          const poster = poster_path
-            ? `https://image.tmdb.org/t/p/w500/${poster_path}`
-            : noPosterImg;
-          return `
+export const makeGalleryMarkUp = ({
+  genre_ids,
+  release_date,
+  vote_average,
+  poster_path,
+  title,
+  id,
+}) => {
+  const genre = createGenresFromTrend(genre_ids);
+  const filmYear = createYear(release_date);
+  const filmRate = vote_average.toFixed(1);
+  const poster = poster_path
+    ? `https://image.tmdb.org/t/p/w500/${poster_path}`
+    : noPosterImg;
+  return `
         <li class='gallery-home__item'>  
       <article class='gallery-home__card'>
         <a class='gallery-home__link'>
@@ -43,17 +49,24 @@ export const makeGalleryMarkUp = ({ genre_ids, release_date, vote_average, poste
       </article>
     </li>
         `;
-        }
+};
 
-        export const makeLibraryGalleryMarkUp = ({ genres, release_date, vote_average, poster_path, title, id }) => {
-          const genre = createGenresFromLibrary(genres);
+export const makeLibraryGalleryMarkUp = ({
+  genres,
+  release_date,
+  vote_average,
+  poster_path,
+  title,
+  id,
+}) => {
+  const genre = createGenresFromLibrary(genres);
 
-          const filmYear = createYear(release_date);
-          const filmRate = vote_average.toFixed(1);
-          const poster = poster_path
-            ? `https://image.tmdb.org/t/p/w500/${poster_path}`
-            : noPosterImg;
-          return `
+  const filmYear = createYear(release_date);
+  const filmRate = vote_average.toFixed(1);
+  const poster = poster_path
+    ? `https://image.tmdb.org/t/p/w500/${poster_path}`
+    : noPosterImg;
+  return `
         <li class='gallery-home__item'>  
       <article class='gallery-home__card'>
         <a class='gallery-home__link'>
@@ -83,6 +96,4 @@ export const makeGalleryMarkUp = ({ genre_ids, release_date, vote_average, poste
       </article>
     </li>
         `;
-        }
-
-  
+};

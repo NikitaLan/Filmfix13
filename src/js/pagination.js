@@ -1,14 +1,14 @@
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
-import {makeGalleryMarkUp} from '../js/makeGalleryMarkUpCard'
-import makeRatingColor from './ratingColor'
-import {toPageTopOnClick} from '../js/btnUp'
+import { makeGalleryMarkUp } from '../js/makeGalleryMarkUpCard';
+import makeRatingColor from './ratingColor';
+import { toPageTopOnClick } from '../js/btnUp';
 
 export class Paginator {
   paginationEl = document.getElementById('pagination');
   renderContainer;
   paginator;
-  
+
   options = {
     totalItems: 500,
     itemsPerPage: 20,
@@ -47,8 +47,8 @@ export class Paginator {
   }
 
   render(data) {
-    const result = data.results
-    const galleryMarkUp = result.map(makeGalleryMarkUp).join('')
+    const result = data.results;
+    const galleryMarkUp = result.map(makeGalleryMarkUp).join('');
     this.renderContainer.innerHTML = galleryMarkUp;
     makeRatingColor();
     toPageTopOnClick();
@@ -56,7 +56,6 @@ export class Paginator {
 
   async initPaginator() {
     this.data = await this.fetchCallback(1);
-    console.log(this.data);
 
     if (this.data.results.length === 0) {
       this.paginationEl.style = 'display: none;';
@@ -68,7 +67,7 @@ export class Paginator {
     this.paginator = new Pagination(this.paginationEl, this.options);
 
     this.render(this.data);
-    
+
     this.paginator.on('beforeMove', async event => {
       this.data = await this.fetchCallback(event.page);
       this.render(this.data);
