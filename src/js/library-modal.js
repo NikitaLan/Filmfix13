@@ -3,7 +3,7 @@
 import { handleModalOpenClose } from './movie-modal/handle-modal-close';
 import { fetchPictures } from './movie-modal/fetch-from-API';
 import { handleApiData } from './movie-modal/handle-API-data';
-import {PAGE_OPEN, renderList} from './whatched-list';
+import { PAGE_OPEN, renderList } from './whatched-list';
 
 import {
   createArrayLocalStorage,
@@ -84,29 +84,27 @@ function onAddFilmToWatched() {
   dataModalFilm.then(data => {
     let getLocalStorage = loadFromLocalStorage('watched');
 
-    if (!getLocalStorage.includes(data.id)) {
-      getLocalStorage.push(data.id);
+    if (!getLocalStorage.find(el => el.id === data.id)) {
+      getLocalStorage.push(data);
       saveToLocalStorage('watched', getLocalStorage);
 
       renameBtnTextCont(btnAddToWatchedEl, 'Remove from watched');
       btnAddToWatchedEl.classList.add('active-btn');
 
-     if(PAGE_OPEN === 1) {
-
-          renderList(getLocalStorage)
-     }
-  
+      if (PAGE_OPEN === 1) {
+        renderList(getLocalStorage);
+      }
     } else {
-      const index = getLocalStorage.findIndex(el => el === data.id);
+      const index = getLocalStorage.findIndex(el => el.id === data.id);
 
       getLocalStorage.splice(index, 1);
       localStorage.setItem('watched', JSON.stringify(getLocalStorage));
 
       renameBtnTextCont(btnAddToWatchedEl, 'Add to watched');
       btnAddToWatchedEl.classList.remove('active-btn');
-      if(PAGE_OPEN === 1) {
-        renderList(getLocalStorage)
-   }
+      if (PAGE_OPEN === 1) {
+        renderList(getLocalStorage);
+      }
     }
   });
 }
@@ -115,27 +113,27 @@ function onQueue() {
   dataModalFilm.then(data => {
     let getLocalStorage = loadFromLocalStorage('queue');
 
-    if (!getLocalStorage.includes(data.id)) {
-      getLocalStorage.push(data.id);
+    if (!getLocalStorage.find(el => el.id === data.id)) {
+      getLocalStorage.push(data);
       saveToLocalStorage('queue', getLocalStorage);
 
       renameBtnTextCont(btnQueue, 'Remove from queue');
 
       btnQueue.classList.add('active-btn');
-      if(PAGE_OPEN === 2) {
-        renderList(getLocalStorage)
-   }
+      if (PAGE_OPEN === 2) {
+        renderList(getLocalStorage);
+      }
     } else {
-      const index = getLocalStorage.findIndex(el => el === data.id);
+      const index = getLocalStorage.findIndex(el => el.id === data.id);
 
       getLocalStorage.splice(index, 1);
       localStorage.setItem('queue', JSON.stringify(getLocalStorage));
 
       renameBtnTextCont(btnQueue, 'Add to queue');
       btnQueue.classList.remove('active-btn');
-      if(PAGE_OPEN === 2) {
-        renderList(getLocalStorage)
-   }
+      if (PAGE_OPEN === 2) {
+        renderList(getLocalStorage);
+      }
     }
   });
 }

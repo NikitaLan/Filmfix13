@@ -36,7 +36,7 @@ function removeLocalStorage(key) {
 
 // 💙💛 Koshyk Kostiantyn функция изменяет название кнопки
 function renameBtn(btn, key, nameA, nameB, id) {
-  if (!loadFromLocalStorage(key).includes(Number(id))) {
+  if (!loadFromLocalStorage(key).find(el => el.id === Number(id))) {
     btn.textContent = nameA;
     btn.classList.remove('active-btn');
   } else {
