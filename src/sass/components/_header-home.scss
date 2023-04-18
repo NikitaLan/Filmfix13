@@ -165,21 +165,26 @@
 
 .btn-watched {
   margin: 0;
-  background-color: #b92f2c;
-  color: var(--color-white);
+  // background-color: #b92f2c;
+  color: var(--color-accent);
 
   @include desktop {
     margin-right: 8px;
   }
 }
 
+
 .btn-queue {
   margin: 0;
 
   background-color: var(--color-white);
-  color: #b92f2c;
+  color: var(--color-accent);
 }
 
+.active {
+  background-color: #b92f2c;
+  color: var(--color-white);
+}
 .btn-black {
   color: var(--color-black);
   background-color: var(--color-white);
