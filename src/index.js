@@ -1,4 +1,3 @@
-import './js/movie-modal';
 import './js/querySearchScript';
 import './js/add-to-watched';
 import './js/trending';
@@ -7,3 +6,4 @@ import './js/footerModal';
 import './js/ourTeam';
 import './js/pagination';
 import './js/trailer';
+import './js/movie-modal';

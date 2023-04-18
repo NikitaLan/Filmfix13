@@ -1,2 +1,3 @@
-import './js/whatched-list.js';
-import './js/queue-list.js';
+import './js/whatched-list';
+import './js/queue-list';
+import './js/library-modal';
