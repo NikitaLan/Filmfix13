@@ -9,3 +9,4 @@ export { loading };
 
 // loading.start(); add before fetch
 // loading.finish(); add after fetch
+// import { loading } from './loader'; add import
