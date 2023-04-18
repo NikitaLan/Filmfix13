@@ -1,3 +1,5 @@
+// 💙💛 Koshyk Kostiantyn
+
 // функция добавляяет в Local Storage
 function saveToLocalStorage(key, value) {
   try {
@@ -34,7 +36,7 @@ function removeLocalStorage(key) {
   }
 }
 
-// 💙💛 Koshyk Kostiantyn функция изменяет название кнопки
+// функция изменяет название кнопки
 function renameBtn(btn, key, nameA, nameB, id) {
   if (!loadFromLocalStorage(key).find(el => el.id === Number(id))) {
     btn.textContent = nameA;
