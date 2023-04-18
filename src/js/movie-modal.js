@@ -48,7 +48,7 @@ async function handleTrandingMoviesClick(event) {
     pickedMovieId
   ); // 💙💛 Koshyk Kostiantyn
 
-  //   // 💙💛 Koshyk Kostiantyn (для использования в add-to-watched.js)
+  // 💙💛 Koshyk Kostiantyn (для использования в add-to-watched.js)
   dataModalFilm = fetchPictures(pickedMovieId);
 
   if (
