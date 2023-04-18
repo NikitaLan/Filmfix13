@@ -30,7 +30,10 @@ refs.queueBtn.addEventListener('click', onLibQueueBtnClick);
 function onLibWatchedBtnClick() {
   let watched = loadFromLocalStorage('watched');
   PAGE_OPEN = 1;
-  if (watched.length === 0) {
+  if(!watched) {
+    return
+  } else if
+  (watched.length === 0) {
     refs.textOoops.classList.remove('visually-hidden');
     refs.watchedList.innerHTML = '';
     return;
@@ -42,8 +45,9 @@ function onLibQueueBtnClick() {
   let queue = loadFromLocalStorage('queue');
 
   PAGE_OPEN = 2;
-
-  if (queue.length === 0) {
+  if(!queue) {
+    return
+  } else if (queue.length === 0) {
     refs.textOoops.classList.remove('visually-hidden');
     refs.watchedList.innerHTML = '';
     return;
