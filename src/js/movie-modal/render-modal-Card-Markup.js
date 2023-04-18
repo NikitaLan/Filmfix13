@@ -1,6 +1,4 @@
 'use strict';
-import modalMoviePlaceholder from '../../images/noImage-placeholder.jpg';
-
 //---------------------------------------- Рендер розмітки ----------------------------------------
 
 export const renderCardMarkup = (
@@ -17,7 +15,7 @@ export const renderCardMarkup = (
           ${
             poster_path // рендер по умові
               ? `<img class="modal-movie__poster" src="https://image.tmdb.org/t/p/original/${poster_path}" alt="movie poster">`
-              : `<img class="modal-movie__poster" src="${modalMoviePlaceholder}" alt="movie placeholder">`
+              : `<img class="modal-movie__poster" src="https://image.tmdb.org/t/p/w500/dykOcAqI01Fci5cKQW3bEUrPWwU.jpg" alt="movie placeholder">`
           }
       </div>
       <div class="modal-movie__container">
