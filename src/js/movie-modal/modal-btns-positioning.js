@@ -1,3 +1,4 @@
+'use strict';
 // ------------------------Динамічне позиціонування кнопок у модалці -------------------------------
 
 export const positionBtnsContainer = () => {
@@ -12,12 +13,12 @@ export const positionBtnsContainer = () => {
     
     //Динамічне обчислення width блоку з кнопками (<div>)
     const btnsWrapStyles = window.getComputedStyle(btnsWrap);
-    dinamicWidthOfBtnsWrap = Number.parseFloat(btnsWrapStyles.width);
+    const dinamicWidthOfBtnsWrap = Number.parseFloat(btnsWrapStyles.width);
     
     // Динамічне обчислення height і width текстового змісту модалки <div>
     const divStyles = window.getComputedStyle(div);
-    dinamicTopCoordinateForBtns = Number.parseFloat(divStyles.height) + ModalPaddingTop + 20 + 'px';  // верхня координата
-    dinamicRightCoordinateForBtns = (Number.parseFloat(divStyles.width) + ModalPaddingRight) - dinamicWidthOfBtnsWrap + 'px';  // права координата    
+    const dinamicTopCoordinateForBtns = Number.parseFloat(divStyles.height) + ModalPaddingTop + 20 + 'px';  // верхня координата
+    const dinamicRightCoordinateForBtns = (Number.parseFloat(divStyles.width) + ModalPaddingRight) - dinamicWidthOfBtnsWrap + 'px';  // права координата    
     
     btnsWrap.style.top = dinamicTopCoordinateForBtns;  // задали кнопці верхню координату
     btnsWrap.style.right = dinamicRightCoordinateForBtns;  // задали кнопці праву координату
