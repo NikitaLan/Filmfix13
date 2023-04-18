@@ -90,7 +90,9 @@ function onAddFilmToWatched() {
 
       renameBtnTextCont(btnAddToWatchedEl, 'Remove from watched');
       btnAddToWatchedEl.classList.add('active-btn');
+
      if(PAGE_OPEN === 1) {
+
           renderList(getLocalStorage)
      }
   
