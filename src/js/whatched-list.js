@@ -23,7 +23,6 @@ const load = key => {
   }
 };
 
-refs.watchedBtn.addEventListener('click', onLibWatchedBtnClick);
 
 
 refs.watchedBtn.classList.add('active');
@@ -40,36 +39,39 @@ refs.queueBtn.addEventListener('click', () => {
 
 
 window.addEventListener('load', onLibWatchedBtnClick);
-
+refs.watchedBtn.addEventListener('click', onLibWatchedBtnClick);
 refs.queueBtn.addEventListener('click', onLibQueueBtnClick);
 
 
-let watched = load(STORAGE_KEY_WATCHED);
-let queue = load(STORAGE_KEY_QUEUE);
+// let watched = load(STORAGE_KEY_WATCHED);
+// let queue = load(STORAGE_KEY_QUEUE);
 
 function onLibWatchedBtnClick() {
+    let watched = load(STORAGE_KEY_WATCHED);
     PAGE_OPEN = 1;
-    if(!watched) {
-
-        refs.textOoops.classList.remove('visually-hidden');
-        refs.watchedList.innerHTML = '';
-        return
-    } else if (watched.length === 0) {
-
-refs.textOoops.classList.add('visually-hidden');
+    // if(!watched) {
+    //     refs.textOoops.classList.remove('visually-hidden');
+    //     refs.watchedList.innerHTML = '';
+    //     return
+    // } else 
+    if (watched.length === 0) {
+refs.textOoops.classList.remove('visually-hidden');
 refs.watchedList.innerHTML = '';
          return;
        } 
+       console.log(watched);
        renderList(watched)
 }
 function onLibQueueBtnClick() {
+    let queue = load(STORAGE_KEY_QUEUE);
     PAGE_OPEN = 2;
-    if(!queue) {
-        refs.textOoops.classList.remove('visually-hidden');
-        refs.watchedList.innerHTML = '';
-        return
-    } else if (queue.length === 0) {
-refs.textOoops.classList.add('visually-hidden');
+    // if(!queue) {
+    //     refs.textOoops.classList.remove('visually-hidden');
+    //     refs.watchedList.innerHTML = '';
+    //     return
+    // } else 
+    if (queue.length === 0) {
+refs.textOoops.classList.remove('visually-hidden');
 refs.watchedList.innerHTML = '';
          return;
        }
@@ -95,18 +97,15 @@ async function getFilmList(array) {
 export async function renderList(array) {
   
     const filmList = await getFilmList(array);
-    console.log(filmList);
+
     if(filmList.length === 0) {
 refs.textOoops.classList.remove('visually-hidden');
-refs.watchedList.innerHTML = `<div class="empty">
-<p class="empty__text">Oops...<br> You have not added anything to your list yet.</p>
-<div class="gallery-library__bg"></div>
-</div>`
+refs.watchedList.innerHTML = '';
 return;
     }
 
     const watchedList = makeList(filmList);
-    console.log(watchedList);
+
     refs.textOoops.classList.add('visually-hidden');
     refs.watchedList.innerHTML = '';
     refs.watchedList.classList.remove('visually-hidden');
