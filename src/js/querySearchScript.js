@@ -1,6 +1,7 @@
 import Notiflix from 'notiflix';
 import { ThemoviedbAPI } from './themoviedb-api';
 import { Paginator } from './pagination';
+import { loading } from './loader';
 
 const searchFormEl = document.querySelector('#search-form');
 const gallaryListEl = document.querySelector('.gallery-home__list');
@@ -11,12 +12,12 @@ let currentQuery = '';
 
 const themoviedbAPI = new ThemoviedbAPI();
 
-const fetchMovie = async (page) => {
+const fetchMovie = async page => {
   try {
+    loading.start();
     const data = await themoviedbAPI.fetchMovie(page);
-
+    loading.finish();
     return data;
-
   } catch (error) {
     console.error(error);
     Notiflix.Notify.failure(error.message);
@@ -46,13 +47,14 @@ const handleSearchFormSubmit = async event => {
       Notiflix.Notify.warning(
         'Sorry, there are no movies matching your search query. Please try again.'
       );
-      textOoops.classList.remove('visually-hidden')
+      textOoops.classList.remove('visually-hidden');
 
       return;
     }
 
-    Notiflix.Notify.success(`Hooray! We found ${results.total_results} movies.`);
-
+    Notiflix.Notify.success(
+      `Hooray! We found ${results.total_results} movies.`
+    );
   } catch (error) {
     console.error(error);
     Notiflix.Notify.failure(error.message);
