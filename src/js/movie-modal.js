@@ -83,14 +83,14 @@ function onAddFilmToWatched() {
   dataModalFilm.then(data => {
     let getLocalStorage = loadFromLocalStorage('watched');
 
-    if (!getLocalStorage.includes(data.id)) {
-      getLocalStorage.push(data.id);
+    if (!getLocalStorage.find(el => el.id === data.id)) {
+      getLocalStorage.push(data);
       saveToLocalStorage('watched', getLocalStorage);
 
       renameBtnTextCont(btnAddToWatchedEl, 'Remove from watched');
       btnAddToWatchedEl.classList.add('active-btn');
     } else {
-      const index = getLocalStorage.findIndex(el => el === data.id);
+      const index = getLocalStorage.findIndex(el => el.id === data.id);
 
       getLocalStorage.splice(index, 1);
       localStorage.setItem('watched', JSON.stringify(getLocalStorage));
@@ -105,15 +105,15 @@ function onQueue() {
   dataModalFilm.then(data => {
     let getLocalStorage = loadFromLocalStorage('queue');
 
-    if (!getLocalStorage.includes(data.id)) {
-      getLocalStorage.push(data.id);
+    if (!getLocalStorage.find(el => el.id === data.id)) {
+      getLocalStorage.push(data);
       saveToLocalStorage('queue', getLocalStorage);
 
       renameBtnTextCont(btnQueue, 'Remove from queue');
 
       btnQueue.classList.add('active-btn');
     } else {
-      const index = getLocalStorage.findIndex(el => el === data.id);
+      const index = getLocalStorage.findIndex(el => el.id === data.id);
 
       getLocalStorage.splice(index, 1);
       localStorage.setItem('queue', JSON.stringify(getLocalStorage));
