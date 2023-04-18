@@ -52,6 +52,7 @@ const handleSearchFormSubmit = async event => {
     }
 
     Notiflix.Notify.success(`Hooray! We found ${results.total_results} movies.`);
+    textOoops.classList.add('visually-hidden')
 
   } catch (error) {
     console.error(error);

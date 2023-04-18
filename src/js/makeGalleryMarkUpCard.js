@@ -1,4 +1,4 @@
-import noPosterImg from '../images/noImage-placeholder.jpg';
+
 import { createGenresFromTrend } from '../js/genre/createGenresFromTrend';
 import { createGenresFromLibrary } from '../js/genre/createGenresFromTrend';
 function createYear(release_date) {
@@ -18,7 +18,7 @@ export const makeGalleryMarkUp = ({
   const filmRate = vote_average.toFixed(1);
   const poster = poster_path
     ? `https://image.tmdb.org/t/p/w500/${poster_path}`
-    : noPosterImg;
+    : `https://image.tmdb.org/t/p/w500/dykOcAqI01Fci5cKQW3bEUrPWwU.jpg`;
   return `
         <li class='gallery-home__item'>  
       <article class='gallery-home__card'>
