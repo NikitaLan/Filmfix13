@@ -5,7 +5,7 @@ import {positionBtnsContainer} from './modal-btns-positioning';
 
 const sectionForRenderIn = document.querySelector('.modal-movie__content'); //<section>
 
-export const handleApiData = async (pickedMovieId) => {
+export const handleApiData = async (pickedMovieId, VoteBoxClass) => {
     sectionForRenderIn.innerHTML = '';
 
     try {
@@ -43,6 +43,9 @@ export const handleApiData = async (pickedMovieId) => {
         sectionForRenderIn.insertAdjacentHTML('beforeend', cardMarkup);
 
         positionBtnsContainer();   // динамічне позиціонування контейнера з кнопками
+
+        const modalAverageVoteBox = document.querySelector(".modal-movie__meta-data-vote"); // <span>
+        modalAverageVoteBox.classList.add(VoteBoxClass); // стилізація рейтингу
 
       } catch (err) {
         console.log(err);

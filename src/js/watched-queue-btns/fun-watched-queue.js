@@ -37,13 +37,13 @@ function removeLocalStorage(key) {
 }
 
 // функция изменяет название кнопки
-function renameBtn(btn, key, nameA, nameB, id) {
+function renameBtn(btn, key, nameA, nameB, id, btnColorClass) {
   if (!loadFromLocalStorage(key).find(el => el.id === Number(id))) {
     btn.textContent = nameA;
-    btn.classList.remove('active-btn');
+    btn.classList.remove(btnColorClass);
   } else {
     btn.textContent = nameB;
-    btn.classList.add('active-btn');
+    btn.classList.add(btnColorClass);
   }
 }
 
