@@ -3,6 +3,7 @@
 import { handleModalOpenClose } from './movie-modal/handle-modal-close';
 import { fetchPictures } from './movie-modal/fetch-from-API';
 import { handleApiData } from './movie-modal/handle-API-data';
+import {handleApiTrailerData} from './trailer'
 
 import {
   createArrayLocalStorage,
@@ -12,7 +13,7 @@ import {
   renameBtn,
   renameBtnTextCont,
 } from '/src/js/watched-queue-btns/fun-watched-queue'; // 💙💛 Koshyk Kostiantyn
-
+const trailerBtn = document.querySelector('.modal-movie__trailer-btn');
 const refs = {
   galleryTrendList: document.querySelector('.gallery-home__list'), //<ul> з трендовими фільмами
   movieModalContainer: document.querySelector('.modal-movie'), // модалка
@@ -78,6 +79,13 @@ async function handleTrandingMoviesClick(event) {
   });
 
   document.body.style.overflow = 'hidden'; //щоб body не скролився при відкритій модалці
+  trailerBtn.addEventListener('click', click)
+  function click() {
+
+    handleApiTrailerData(pickedMovieId)
+    trailerBtn.removeEventListener('click', click)
+  }
+  
 }
 
 // ========================= функционал для кнопок "Add to watcheed" и "Add to queue" 💙💛 Koshyk Kostiantyn
@@ -136,3 +144,4 @@ function onQueue() {
     }
   });
 }
+// export 
