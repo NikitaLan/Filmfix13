@@ -29,7 +29,7 @@
   .tui-page-btn {
     font-family: var(--main-font);
     font-weight: 500;
-    font-size: 16px;
+    font-size: 12px;
     line-height: calc(12 / 16);
     color: --color-black;
     border-radius: 5px;
@@ -39,8 +39,13 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    width: 40px;
-    height: 40px;
+    width: 25px;
+    height: 25px;
+    @include tablet {
+      width: 40px;
+      height: 40px;
+      font-size: 16px;
+    }
 
     .tui-ico-ellip {
       display: inline-flex;

@@ -33,7 +33,7 @@ export const handleModalOpenClose = () => {
       
       function handleMovieModalKeyPress (event) {
         //клікнувши на Escape
-        //console.log(event.code);
+
         if (event.code === 'Escape') {
           refs.movieModal.classList.add('is-hidden');
           document.body.style.overflow = 'visible';

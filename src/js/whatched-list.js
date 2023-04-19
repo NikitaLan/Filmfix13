@@ -38,7 +38,6 @@ function onLibWatchedBtnClick() {
     refs.watchedList.innerHTML = '';
     return;
   }
-  // console.log(watched);
   renderList(watched);
 }
 function onLibQueueBtnClick() {
