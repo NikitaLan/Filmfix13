@@ -26,7 +26,7 @@ clearListeners();
 }
 
 function closeFooterModal(evt){
-    if (evt.target === refs.footerBackdrop || evt.key === 'Escape'){
+    if (evt.target === refs.footerBackdrop || evt.code === 'Escape'){
         refs.footerBackdrop.classList.add('is-hidden');
         clearListeners();
     }
