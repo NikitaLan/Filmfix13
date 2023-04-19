@@ -15,12 +15,14 @@ import {
 } from './watched-queue-btns/fun-watched-queue'; // 💙💛 Koshyk Kostiantyn
 
 const refs = {
-  libraryListOfWatched: document.querySelector('.gallery-library__list'), //<ul> з трендовими фільмами
+  libraryListOfWatched: document.querySelector('.gallery-library__list'), //<ul> з переглянутими фільмами
+  movieModalContainer: document.querySelector(".modal-movie"), // модалка
+  movieModalCommandBtns: document.querySelectorAll('.modal-movie__command-btns'), // командні кнопки
   btnAddToWatched: document.querySelector('.modal-movie__add-to-watched-btn'), // 💙💛 Koshyk Kostiantyn
   btnQueue: document.querySelector('.modal-movie__add-to-queue-btn'), // 💙💛 Koshyk Kostiantyn
 };
 
-refs.libraryListOfWatched.addEventListener('click', handleTrandingMoviesClick); //<ul> з трендовими фільмами
+refs.libraryListOfWatched.addEventListener('click', handleTrandingMoviesClick); //<ul> з переглянутими фільмами
 
 removeLocalStorage('watched'); // 💙💛 Koshyk Kostiantyn
 removeLocalStorage('queue'); // 💙💛 Koshyk Kostiantyn
@@ -39,14 +41,16 @@ async function handleTrandingMoviesClick(event) {
     'watched',
     'Add to watched',
     'Remove from watched',
-    pickedMovieId
+    pickedMovieId,
+    'active-btn--yellow'
   ); // 💙💛 Koshyk Kostiantyn
   renameBtn(
     refs.btnQueue,
     'queue',
     'Add to queue',
     'Remove from queue',
-    pickedMovieId
+    pickedMovieId,
+    'active-btn--yellow'
   ); // 💙💛 Koshyk Kostiantyn
 
   // 💙💛 Koshyk Kostiantyn (для использования в add-to-watched.js)
@@ -63,7 +67,14 @@ async function handleTrandingMoviesClick(event) {
   }
 
   handleModalOpenClose();
-  handleApiData(pickedMovieId);
+  refs.movieModalContainer.classList.add('modal-movie--background-yellow');
+//   modal-movie--background-red
+
+  handleApiData(pickedMovieId, 'modal-movie__meta-data--yellow');
+
+  refs.movieModalCommandBtns.forEach((movieModalCommandBtn) => {
+    movieModalCommandBtn.classList.add('modal-movie__command-btns--yellow');
+  });
 
   document.body.style.overflow = 'hidden'; //щоб body не скролився при відкритій модалці
 }
@@ -89,7 +100,7 @@ function onAddFilmToWatched() {
       saveToLocalStorage('watched', getLocalStorage);
 
       renameBtnTextCont(btnAddToWatchedEl, 'Remove from watched');
-      btnAddToWatchedEl.classList.add('active-btn');
+      btnAddToWatchedEl.classList.add('active-btn--yellow');
 
       if (PAGE_OPEN === 1) {
         renderList(getLocalStorage);
@@ -101,7 +112,7 @@ function onAddFilmToWatched() {
       localStorage.setItem('watched', JSON.stringify(getLocalStorage));
 
       renameBtnTextCont(btnAddToWatchedEl, 'Add to watched');
-      btnAddToWatchedEl.classList.remove('active-btn');
+      btnAddToWatchedEl.classList.remove('active-btn--yellow');
       if (PAGE_OPEN === 1) {
         renderList(getLocalStorage);
       }
@@ -119,7 +130,7 @@ function onQueue() {
 
       renameBtnTextCont(btnQueue, 'Remove from queue');
 
-      btnQueue.classList.add('active-btn');
+      btnQueue.classList.add('active-btn--yellow');
       if (PAGE_OPEN === 2) {
         renderList(getLocalStorage);
       }
@@ -130,7 +141,7 @@ function onQueue() {
       localStorage.setItem('queue', JSON.stringify(getLocalStorage));
 
       renameBtnTextCont(btnQueue, 'Add to queue');
-      btnQueue.classList.remove('active-btn');
+      btnQueue.classList.remove('active-btn--yellow');
       if (PAGE_OPEN === 2) {
         renderList(getLocalStorage);
       }
