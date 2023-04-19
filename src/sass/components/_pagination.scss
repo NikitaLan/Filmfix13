@@ -1,16 +1,31 @@
 #pagination.tui-pagination {
+  margin: 0 auto;
+  height: auto;
+  padding-top: 40px;
+  padding-bottom: 40px;
+
   .tui-first {
+    display: none !important;
     border-radius: 5px;
     background-color: var(--color-bg);
   }
   .tui-last {
+    display: none !important;
     border-radius: 5px;
     background-color: var(--color-bg);
   }
 
+  .tui-next-is-ellip {
+    display: none !important;
+  }
+  .tui-prev-is-ellip.tui-first-child {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: center;
+  }
+
   .tui-ico-ellip {
-    display: flex;
-    text-align: center;
     margin: 0 auto;
   }
 
@@ -24,9 +39,8 @@
     border-color: var(--color-accent);
   }
 
-  padding-top: 40px;
-  padding-bottom: 40px;
   .tui-page-btn {
+    margin: 0 auto;
     font-family: var(--main-font);
     font-weight: 500;
     font-size: 12px;
@@ -39,24 +53,23 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    width: 25px;
-    height: 25px;
-    @include tablet {
-      width: 40px;
-      height: 40px;
-      font-size: 16px;
-    }
-
-    .tui-ico-ellip {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      justify-content: center;
-    }
+    width: 40px;
+    height: 40px;
   }
+}
 
-  @include tablet {
+@include tablet {
+  #pagination.tui-pagination {
     padding-top: 60px;
     padding-bottom: 60px;
+    .tui-first {
+      display: inline-flex !important;
+    }
+    .tui-last {
+      display: inline-flex !important;
+    }
+    .tui-next-is-ellip {
+      display: inline-flex !important;
+    }
   }
 }
