@@ -199,10 +199,31 @@
 
   & ::placeholder {
     color: var(--color-black);
+  //   animation-name: typing-animation;
+  // animation-duration: 2s;
+  // animation-timing-function: steps(20, end);
   }
 
   @include tablet {
     order: 0;
+  }
+}
+
+.p {
+  padding: 50px;
+  color: white;
+
+  animation-name: typing-animation;
+animation-duration: 2s;
+animation-timing-function: steps(20, end);
+}
+
+@keyframes typing-animation {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
   }
 }
 
