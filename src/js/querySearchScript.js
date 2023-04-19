@@ -42,8 +42,6 @@ const handleSearchFormSubmit = async event => {
     await paginator.initPaginator();
     let results = paginator.getResults();
 
-    console.log(results);
-
     if (!results.results.length) {
       Notiflix.Notify.warning(
         'Sorry, there are no movies matching your search query. Please try again.'

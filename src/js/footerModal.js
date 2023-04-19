@@ -2,8 +2,11 @@
 const refs ={
  footerCloseBtn : document.querySelector("[data-footer-modal-close]"),
  footerOpenBtn: document.querySelector("[data-footer-modal-open]"),
- footerBackdrop : document.querySelector('.footer__backdrop')
+ footerBackdrop : document.querySelector('.footer__backdrop'),
+ game: document.querySelector('.memory-game'),
+ modalContent: document.querySelector('.team__list'),
  }
+
 
 refs.footerOpenBtn.addEventListener('click', onFooterModal);
 
@@ -19,15 +22,18 @@ export function onFooterModal(){
 }
 
 
-
 function footerModalHidden(){
 refs.footerBackdrop.classList.add('is-hidden');
+refs.game.classList.add('visually-hidden')
+refs.modalContent.classList.remove('visually-hidden');
 clearListeners();
 }
 
 function closeFooterModal(evt){
     if (evt.target === refs.footerBackdrop || evt.code === 'Escape'){
         refs.footerBackdrop.classList.add('is-hidden');
+        
+
         clearListeners();
     }
 }

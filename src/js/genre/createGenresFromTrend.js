@@ -24,7 +24,6 @@ export const createGenresFromTrend = array => {
   const genre = array.map(el => {
     return ' ' + el.name;
   });
-  console.log(genre);
   if (!genre.length) {
     return 'Unknown genre';
   } else if (genre.length > 2) {

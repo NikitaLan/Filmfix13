@@ -93,7 +93,7 @@ background-color: var(--color-bg);
   width: 25px;
   height: 25px;
   top: 20px;
-  right: 30px;
+  right: 5px;
   cursor: pointer;
   background: transparent;
   border: none;
@@ -105,7 +105,9 @@ background-color: var(--color-bg);
   border-radius: 50%;
   outline: none;
   box-shadow: -2px -2px 5px #fff, 3px 3px 5px rgba(0,0,0,.1);
-
+@include mobile {
+  right: 30px;
+}
 }
 .modal__icon-close{
   width: 20px;
@@ -135,13 +137,16 @@ background-color: var(--color-bg);
   position: relative;
   text-align: center;
   margin-bottom: 20px;
-  padding-right: 160px;
+  padding-right: 140px;
  color: var(--color-black);
+ @include mobile {
+  padding-right: 160px;
+ }
 }
 
 .modal__container-list{
   margin-top: -20px;
-      padding-left: 150px;
+      padding-left: 100px;
       text-align: left;
       list-style: none;
       
@@ -151,6 +156,9 @@ background-color: var(--color-bg);
       animation-name: change;
       animation-duration: 10s;
       animation-iteration-count: infinite;
+      @include mobile {
+        padding-left: 150px;
+      }
 }
 .modal__container-list-item
 { line-height:40px;
@@ -178,6 +186,7 @@ color: var(--color-accent);}
   justify-content: center;
   width: 100%;;
   margin-top: 60px;
+  gap: 10px;
 }
 
 .team__item{
@@ -321,20 +330,27 @@ pointer-events: none;
 .modal__content{
   position: absolute;
   margin-top: 15px;
-  left: 50%;
+  left: 47%;
   transform: translate(-50%, -50%);
   overflow:hidden;
-  font-size: 25px;
+  font-size: 20px;
   line-height: 40px;
   color: #ecf0f1;
+  @include mobile {
+    left: 50%;
+    font-size: 25px;
+  }
+
 }
 
 .modal__content-container{
   font-weight: 600;
   overflow: hidden;
   height: 40px;
+  padding: 0 10px;
+@include mobile {
   padding: 0 40px;
-
+}
   &:before {
     content: '[';
     left: 0;
@@ -416,4 +432,59 @@ pointer-events: none;
   49.98%,62.64% {transform:translate3d(0,-75%,0);}
   66.64%,79.3% {transform:translate3d(0,-50%,0);}
   83.3%,95.96% {transform:translate3d(0,-25%,0);}
+}
+
+
+.memory-game {
+  width: 220px;
+  height: 200px;
+  perspective: 1000px;
+  flex-wrap: wrap;
+  margin: auto;
+  display: flex;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  @include mobile {
+    width: 370px;
+    height: 280px;
+  }
+  @include tablet {
+    width: 550px;
+    height: 500px;
+  }
+
+}
+.memory-card {
+  width: calc(25% - 10px);
+  height: calc(33.333% - 10px);
+  margin: 5px;
+  position: relative;
+  box-shadow: 1px 1px 1px rgba(0,0,0,.3);
+  transform: scale(1);
+  transform-style: preserve-3d;
+  transition: transform .5s;
+ 
+}
+
+.memory-card:active {
+  transform: scale(0.97);
+  transition: transform .2s;
+}
+.memory-card.flip {
+  transform: rotateY(180deg);
+}
+
+.front-face,
+.back-face {
+  width: 100%;
+  height: 100%;
+  padding: 5px;
+  position: absolute;
+  border-radius: 5px;
+  background: #da8281cc;
+  backface-visibility: hidden;
+  object-fit: contain;
+}
+.front-face {
+  transform: rotateY(180deg);
 }

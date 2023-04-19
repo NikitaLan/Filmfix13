@@ -6,4 +6,5 @@ import './js/ourTeam';
 import './js/pagination';
 import './js/trailer';
 import './js/movie-modal';
-import './js/placeholder-animation'
+import './js/placeholder-animation';
+import './js/pashalka'
