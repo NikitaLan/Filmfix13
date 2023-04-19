@@ -29,7 +29,8 @@ export const handleApiTrailerData = async (pickedMovieId) => {
         window.addEventListener('keydown', (event) => { 
             if (event.key === 'Escape') { 
                 instance.close(); 
-            }     
+            }   
+            window.removeEventListener('keydown', onEscKeyDown);  
         }) 
     }
     }
