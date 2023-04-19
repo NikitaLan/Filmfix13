@@ -349,3 +349,19 @@
 //   color: var(--color-white);
 //   background-color: var(--color-accent);
 // }
+.modal-movie__trailer-btn {
+  position: absolute;
+  top: 60px;
+  left: 25px;
+display: flex;
+width: 50px;
+height: 50px;
+justify-content: center;
+align-items: center;
+}
+.trailer__icon {
+  fill: var(--color-accent);
+}
+.modal-movie__trailer-btn:hover .trailer__icon {
+  fill: var(--color-white);
+}
