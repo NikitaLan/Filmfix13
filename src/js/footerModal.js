@@ -11,7 +11,7 @@ refs.footerOpenBtn.addEventListener('click', onFooterModal);
 export function onFooterModal(){
    
     refs.footerBackdrop.classList.remove('is-hidden');
-    // document.body.classList.add('noScroll');
+    // document.querySelector('body').classList.add('noScroll');
     document.addEventListener('keydown', closeFooterModal);
     refs.footerBackdrop.addEventListener('click', closeFooterModal);
     refs.footerCloseBtn.addEventListener('click', footerModalHidden);
