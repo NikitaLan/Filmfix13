@@ -28,15 +28,15 @@ export const renderCardMarkup = (
               <li class="modal-movie__meta-wrapper">
                   <p class="modal-movie__meta">Vote / Votes</p>
                   <div>
-                      <span class="modal-movie__meta-data modal-movie__meta-data--red">${vote_average}</span>/<span class="modal-movie__meta-data modal-movie__meta-data--grey">${vote_count}</span>
+                      <span class="modal-movie__meta-data modal-movie__meta-data-vote">${vote_average}</span>/<span class="modal-movie__meta-data modal-movie__meta-data--grey">${vote_count}</span>
                   </div>
               </li>
               <li class="modal-movie__meta-wrapper">
                   <p class="modal-movie__meta">Popularity</p>
                   ${
                     popularity.length === 0
-                      ? `<span class="modal-movie__meta-data" style="line-height: 14.06px")>Not found</span>`
-                      : `<span class="modal-movie__meta-data" style="line-height: 14.06px")>${popularity}</span>`
+                      ? `<span class="modal-movie__meta-data" style="line-height: 14.06px">Not found</span>`
+                      : `<span class="modal-movie__meta-data" style="line-height: 14.06px">${popularity}</span>`
                   }
               </li>
               <li class="modal-movie__meta-wrapper">
