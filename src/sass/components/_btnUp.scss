@@ -1,22 +1,20 @@
 .btnUp-wrapper {
-    position: fixed;
-    bottom: 39px;
-    right: 10px;
+  position: fixed;
+  bottom: 39px;
+  right: 10px;
 
-    z-index: 10;
+  z-index: 10;
 
   fill: tomato;
   cursor: pointer;
 
-
   @media screen and (min-width: 1200px) {
     bottom: 55px;
-
   }
 }
 
-
-.btnUp-wrapper:hover, .btnUp-wrapper:focus {
+.btnUp-wrapper:hover,
+.btnUp-wrapper:focus {
   fill: rgba(87, 0, 128, 0.637);
 }
 

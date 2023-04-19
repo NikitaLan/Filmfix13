@@ -22,7 +22,6 @@ const fetchMovie = async page => {
     console.error(error);
     Notiflix.Notify.failure(error.message);
   }
-
 };
 
 const handleSearchFormSubmit = async event => {
@@ -51,11 +50,10 @@ const handleSearchFormSubmit = async event => {
       return;
     }
 
-
-    Notiflix.Notify.success(`Hooray! We found ${results.total_results} movies.`);
-    textOoops.classList.add('visually-hidden')
-
-
+    Notiflix.Notify.success(
+      `Hooray! We found ${results.total_results} movies.`
+    );
+    textOoops.classList.add('visually-hidden');
   } catch (error) {
     console.error(error);
     Notiflix.Notify.failure(error.message);

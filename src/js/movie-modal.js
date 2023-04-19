@@ -15,8 +15,10 @@ import {
 
 const refs = {
   galleryTrendList: document.querySelector('.gallery-home__list'), //<ul> з трендовими фільмами
-  movieModalContainer: document.querySelector(".modal-movie"), // модалка
-  movieModalCommandBtns: document.querySelectorAll('.modal-movie__command-btns'), // командні кнопки
+  movieModalContainer: document.querySelector('.modal-movie'), // модалка
+  movieModalCommandBtns: document.querySelectorAll(
+    '.modal-movie__command-btns'
+  ), // командні кнопки
   btnAddToWatched: document.querySelector('.modal-movie__add-to-watched-btn'), // 💙💛 Koshyk Kostiantyn
   btnQueue: document.querySelector('.modal-movie__add-to-queue-btn'), // 💙💛 Koshyk Kostiantyn
 };
@@ -28,7 +30,8 @@ removeLocalStorage('queue'); // 💙💛 Koshyk Kostiantyn
 
 //-----------------Основна функція------------------------------------
 
-async function handleTrandingMoviesClick(event) {  // в результаті кліку на будь-яку картку фільму:
+async function handleTrandingMoviesClick(event) {
+  // в результаті кліку на будь-яку картку фільму:
   let pickedMovieId = event.target.dataset.id;
 
   createArrayLocalStorage('watched'); // 💙💛 Koshyk Kostiantyn
@@ -70,10 +73,9 @@ async function handleTrandingMoviesClick(event) {  // в результаті к
 
   handleApiData(pickedMovieId, 'modal-movie__meta-data--red');
 
-  refs.movieModalCommandBtns.forEach((movieModalCommandBtn) => {
+  refs.movieModalCommandBtns.forEach(movieModalCommandBtn => {
     movieModalCommandBtn.classList.add('modal-movie__command-btns--red');
   });
-
 
   document.body.style.overflow = 'hidden'; //щоб body не скролився при відкритій модалці
 }

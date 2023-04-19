@@ -116,7 +116,7 @@
   &__content {
     @media screen and (max-width: 767px) {
       margin-bottom: 20px;
-    } 
+    }
     @include tablet {
       display: flex;
     }
@@ -197,13 +197,12 @@
 
   &__meta-data--yellow {
     color: var(--color-white);
-    background-color:rgba(126, 50, 3, 0.705);
+    background-color: rgba(126, 50, 3, 0.705);
     padding: 1px 10px;
     border-radius: 5px;
     margin-right: 3px;
     line-height: 14.06px;
   }
-
 
   &__meta-data--grey {
     display: inline-block;
@@ -228,7 +227,6 @@
       width: 264px;
       max-height: 220px;
       overflow-y: auto;
-
     }
     @include desktop {
       width: 391px;
@@ -237,7 +235,8 @@
   }
 
   // ----------------- Кнопки -------------------------
-  &__command-btns-wrap {  // координати в movie-modal.js
+  &__command-btns-wrap {
+    // координати в movie-modal.js
     display: flex;
 
     @include tablet {
@@ -266,7 +265,8 @@
       background-color: var(--color-accent);
       box-shadow: -15px -15px 30px 0 #fff, 15px 15px 30px 0 #1d0dca17;
       border-color: transparent;
-      transition: background-color var(--animation), color var(--animation), border-color var(--animation);
+      transition: background-color var(--animation), color var(--animation),
+        border-color var(--animation);
     }
   }
 
@@ -277,14 +277,15 @@
 
     box-shadow: -10px -10px 30px 0 #fff, 10px 10px 30px 0 #da690d5e;
     transition: 0.2s;
-    
+
     &:hover,
     &:focus {
       color: var(--color-white);
-      background-color:rgba(126, 50, 3, 0.507);
+      background-color: rgba(126, 50, 3, 0.507);
       box-shadow: -15px -15px 30px 0 #fff, 15px 15px 30px 0 #86410957;
       border-color: transparent;
-      transition: background-color var(--animation), color var(--animation), border-color var(--animation);
+      transition: background-color var(--animation), color var(--animation),
+        border-color var(--animation);
     }
   }
 
@@ -338,10 +339,9 @@
 
   &__add-to-queue-btn.active-btn--yellow,
   &__add-to-watched-btn.active-btn--yellow {
-      color: var(--color-white);
-      background-color: rgba(126, 50, 3, 0.418);
+    color: var(--color-white);
+    background-color: rgba(126, 50, 3, 0.418);
   }
-
 }
 
 // .modal-movie__add-to-queue-btn.active-btn,

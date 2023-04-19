@@ -2,15 +2,15 @@
 //---------------------------------------- Рендер розмітки ----------------------------------------
 
 export const renderCardMarkup = (
-    poster_path,
-    vote_average,
-    vote_count,
-    popularity,
-    original_title,
-    eachGenre,
-    overview
-  ) => {
-    return `
+  poster_path,
+  vote_average,
+  vote_count,
+  popularity,
+  original_title,
+  eachGenre,
+  overview
+) => {
+  return `
       <div class="modal-movie__poster-wrapper"> 
           ${
             poster_path // рендер по умові
@@ -64,4 +64,4 @@ export const renderCardMarkup = (
           }
       </div>
       `;
-  }
+};
