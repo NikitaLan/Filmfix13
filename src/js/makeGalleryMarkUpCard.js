@@ -1,4 +1,3 @@
-
 import { createGenresFromTrend } from '../js/genre/createGenresFromTrend';
 import { createGenresFromLibrary } from '../js/genre/createGenresFromTrend';
 function createYear(release_date) {

@@ -204,9 +204,9 @@
 
   & ::placeholder {
     color: var(--color-black);
-  //   animation-name: typing-animation;
-  // animation-duration: 2s;
-  // animation-timing-function: steps(20, end);
+    //   animation-name: typing-animation;
+    // animation-duration: 2s;
+    // animation-timing-function: steps(20, end);
   }
 
   @include tablet {
@@ -219,8 +219,8 @@
   color: white;
 
   animation-name: typing-animation;
-animation-duration: 2s;
-animation-timing-function: steps(20, end);
+  animation-duration: 2s;
+  animation-timing-function: steps(20, end);
 }
 
 @keyframes typing-animation {
