@@ -11,10 +11,11 @@ refs.footerOpenBtn.addEventListener('click', onFooterModal);
 export function onFooterModal(){
    
     refs.footerBackdrop.classList.remove('is-hidden');
-    document.querySelector('body').classList.add('noScroll');
+    document.body.classList.add('noScroll');
     document.addEventListener('keydown', closeFooterModal);
     refs.footerBackdrop.addEventListener('click', closeFooterModal);
     refs.footerCloseBtn.addEventListener('click', footerModalHidden);
+    document.body.style.overflow = 'hidden';
 }
 
 
@@ -25,7 +26,7 @@ clearListeners();
 }
 
 function closeFooterModal(evt){
-    if (evt.target === refs.footerBackdrop){
+    if (evt.target === refs.footerBackdrop || evt.key === 'Escape'){
         refs.footerBackdrop.classList.add('is-hidden');
         clearListeners();
     }
