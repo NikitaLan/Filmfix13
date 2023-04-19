@@ -22,6 +22,7 @@ const fetchMovie = async page => {
     console.error(error);
     Notiflix.Notify.failure(error.message);
   }
+
 };
 
 const handleSearchFormSubmit = async event => {
@@ -47,8 +48,8 @@ const handleSearchFormSubmit = async event => {
       Notiflix.Notify.warning(
         'Sorry, there are no movies matching your search query. Please try again.'
       );
-      textOoops.classList.remove('visually-hidden');
 
+      textOoops.classList.remove('visually-hidden');
       return;
     }
 
