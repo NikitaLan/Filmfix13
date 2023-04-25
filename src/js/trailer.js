@@ -22,17 +22,19 @@ export const handleApiTrailerData = async (pickedMovieId) => {
     await fetchTrailer(pickedMovieId).then(el => {
 
       const trailerKey = el.results[0].key;
-      const instance = basicLightbox.create(`<iframe class="trailerPlayer" src="https://www.youtube.com/embed/${trailerKey}" width="1200" height="800" frameborder="0"></iframe>`);
+      const instance = basicLightbox.create(`<iframe class="trailerPlayer" src="https://www.youtube.com/embed/${trailerKey}" frameborder="0"></iframe>`);
 
+      
+      window.addEventListener('keydown', onEscKeyDown);
+      
       instance.show();
-      if (instance.show()) { 
-        window.addEventListener('keydown', (event) => { 
-            if (event.key === 'Escape') { 
-                instance.close(); 
-            }   
-            window.removeEventListener('keydown', onEscKeyDown);  
-        }) 
-    }
+    
+      function onEscKeyDown(event) {
+        if (event.code === 'Escape') {
+          instance.close();
+        }
+        window.removeEventListener('keydown', onEscKeyDown);
+      }
     }
       );
 
