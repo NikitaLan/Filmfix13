@@ -28,10 +28,9 @@ const handleSearchFormSubmit = async event => {
   event.preventDefault();
 
   currentQuery = event.currentTarget.elements.searchQuery.value.trim();
-
-  if (!currentQuery) {
-    return;
-  }
+  // if (!currentQuery) {
+  //   return;
+  // }
 
   themoviedbAPI.query = currentQuery;
   event.currentTarget.elements.searchQuery.value = '';
@@ -41,7 +40,7 @@ const handleSearchFormSubmit = async event => {
     await paginator.initPaginator();
     let results = paginator.getResults();
 
-    if (!results.results.length) {
+    if (!results.results.length || currentQuery === '') {
       Notiflix.Notify.warning(
         'Sorry, there are no movies matching your search query. Please try again.'
       );

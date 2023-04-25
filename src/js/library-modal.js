@@ -81,11 +81,11 @@ async function handleTrandingMoviesClick(event) {
   });
 
   document.body.style.overflow = 'hidden'; //щоб body не скролився при відкритій модалці
-  trailerBtn.addEventListener('click', click)
-  function click() {
+  trailerBtn.addEventListener('click', onTrailerClick)
+  function onTrailerClick() {
 
     handleApiTrailerData(pickedMovieId)
-    trailerBtn.removeEventListener('click', click)
+    trailerBtn.removeEventListener('click', onTrailerClick)
   }
 }
 

@@ -109,3 +109,20 @@
     line-height: 1.2;
   }
 }
+
+.trailerPlayer {
+  width: 320px;
+  height: 180px;
+  @include mobile {
+    width: 480px;
+    height: 230px;
+  }
+  @include tablet {
+    width: 760px;
+    height: 420px;
+  }
+  @include desktop {
+    width: 1100px;
+    height: 580px;
+  }
+}
