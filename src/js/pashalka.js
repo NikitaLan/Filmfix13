@@ -10,6 +10,7 @@ function pashalkaOn() {
   modalFooter.classList.add('visually-hidden');
   game.classList.remove('visually-hidden');
 }
+
 let hasFlippedCard = false;
 let lockBoard = false;
 let firstCard, secondCard;
@@ -30,7 +31,10 @@ function flipCard() {
 }
 
 function checkForMatch() {
+
+
   let isMatch = firstCard.dataset.framework === secondCard.dataset.framework;
+  console.log(+isMatch);
   +isMatch ? disableCards() : unflipCards();
 }
 
@@ -61,3 +65,4 @@ function resetBoard() {
   });
 })();
 cards.forEach(card => card.addEventListener('click', flipCard));
+
