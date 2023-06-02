@@ -43,3 +43,5 @@ export const handleApiTrailerData = async (pickedMovieId) => {
   }
 
 };
+
+
